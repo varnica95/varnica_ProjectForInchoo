@@ -20,17 +20,17 @@ class Router
         $request = trim($_SERVER['REQUEST_URI'], '/');
         $url = explode('/', $request);
 
-        if(empty($url))
+        if (empty($url[0]))
         {
-            $_SERVER['REQUEST_URI'] = 'Home';
+            $url[0] = 'Home';
         }
-
-        $this->controller = isset($url[0]) ? 'Controllers\\' . ucfirst($url[0])  : 'Home';
+        $this->controller = isset($url[0]) ?  'Controllers\\' . ucfirst($url[0])  : 'Home';
         $this->action = isset($url[1]) ? ucfirst($url[1]) : 'index';
         var_dump($this->controller);
         unset($url[0], $url[1]);
 
         $this->prams = !empty($url) ? array_values($url) : array();
+
     }
 
     public function run()

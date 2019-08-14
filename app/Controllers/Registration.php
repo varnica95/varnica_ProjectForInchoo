@@ -11,4 +11,9 @@ class Registration extends Controller
         $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
         $this->view->render();
     }
+
+    public function iii()
+    {
+        echo "aaa";
+    }
 }
