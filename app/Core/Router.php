@@ -6,7 +6,7 @@ namespace Core;
 
 class Router
 {
-    protected $controller = 'Home',
+    protected $controller = '',
               $action,
               $prams;
 
@@ -20,9 +20,9 @@ class Router
         $request = trim($_SERVER['REQUEST_URI'], '/');
         $url = explode('/', $request);
 
-        if (empty($url[0]))
+        if(empty($url))
         {
-            $url[0] = 'Home';
+            $_SERVER['REQUEST_URI'] = 'Home';
         }
 
         $this->controller = isset($url[0]) ? 'Controllers\\' . ucfirst($url[0])  : 'Home';
