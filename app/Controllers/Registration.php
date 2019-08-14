@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
+use Includes\Validation;
 use Models\User;
 
 class Registration extends Controller
@@ -15,11 +16,16 @@ class Registration extends Controller
 
     public function createNew()
     {
-        if (isset($_POST['signup-submit'])){
-            $newUser = new User($_POST);
-            $newUser->newUser();
+        if (isset($_POST['signup-submit'])) {
+            $validation = new Validation($_POST);
+            if ($validation->getPass()) {
+                $newUser = new User($_POST);
+                $newUser->newUser();
+            } else {
+                echo "nemaaa";
+                var_dump($validation->getErrors());
+            }
         }
-
 
     }
 }

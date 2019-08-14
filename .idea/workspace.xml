@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="da4c3722-9418-4339-b782-25cc25e38f0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Registration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/Registration/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Registration/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/header.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +30,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -48,6 +49,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Registration.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/shared-gallery/app/Controllers/Registration.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.Registration.php" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -59,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1565767959427</updated>
       <workItem from="1565767960605" duration="18193000" />
+      <workItem from="1565806223501" duration="6386000" />
     </task>
     <servers />
   </component>
@@ -70,7 +82,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
