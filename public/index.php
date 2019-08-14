@@ -5,7 +5,6 @@ use Models\Config;
 
 spl_autoload_register(function($class) {
     $file = str_replace('\\', '/', $class);
-    echo $file, '<br>';
     require_once '../app/' .$file . '.php';
 });
 

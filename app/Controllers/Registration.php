@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
+use Models\User;
 
 class Registration extends Controller
 {
@@ -12,8 +13,13 @@ class Registration extends Controller
         $this->view->render();
     }
 
-    public function iii()
+    public function createNew()
     {
-        echo "aaa";
+        if (isset($_POST['signup-submit'])){
+            $newUser = new User($_POST);
+            $newUser->newUser();
+        }
+
+
     }
 }

@@ -60,4 +60,9 @@ class Database
     {
         return $this->_results;
     }
+
+    public function getPDO()
+    {
+        return $this->_pdo;
+    }
 }

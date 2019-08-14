@@ -26,7 +26,6 @@ class Router
         }
         $this->controller = isset($url[0]) ?  'Controllers\\' . ucfirst($url[0])  : 'Home';
         $this->action = isset($url[1]) ? ucfirst($url[1]) : 'index';
-        var_dump($this->controller);
         unset($url[0], $url[1]);
 
         $this->prams = !empty($url) ? array_values($url) : array();

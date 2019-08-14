@@ -1,10 +1,12 @@
+
+/* NAVIGATION */
 nav{
-    background-color: grey;
+    background-color: black;
     color: red;
 }
 
 nav ul{
-    list-style-type: circle;
+    list-style-type: none;
     padding: 0px;
     margin: 0px;
 }
@@ -18,4 +20,35 @@ nav ul li a{
     padding: 10px 14px;
     text-decoration: none;
     color: bisque;
+}
+
+/* REGISTRATION */
+
+.signup-form {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.signup-form input {
+    width: 90%;
+    height: 40px;
+    padding: 0px 5%;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    font-family: arial;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.signup-form button {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: 40px;
+    background-color: black;
+    font-family: arial;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
 }

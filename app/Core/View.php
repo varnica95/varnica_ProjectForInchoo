@@ -15,7 +15,6 @@ class View
 
     public function render()
     {
-        echo "!!!... " . $this->view_file . " ...!!!";
         if(file_exists('../app/Views/' . $this->view_file . '.phtml'))
         {
             require '../app/Views/' . $this->view_file . '.phtml';
