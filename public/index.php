@@ -9,6 +9,8 @@ spl_autoload_register(function($class) {
     require_once '../app/' .$file . '.php';
 });
 
+new \Core\Router();
+
 $a = Models\Database::getInstance()->query('SELECT * FROM users WHERE id = ?', array('2'));
 //var_dump($a);
 
@@ -17,4 +19,4 @@ $a = Models\Database::getInstance()->query('SELECT * FROM users WHERE id = ?', a
 //    echo $user->name;
 //}
 
-echo $a->result()->name;
+var_dump($a->result()->email);

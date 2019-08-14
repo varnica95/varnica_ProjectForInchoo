@@ -28,8 +28,4 @@ class Config{
         }
         return self::$_instance;
     }
-    public function ConfigToSting()
-    {
-        return $this->_config;
-    }
 }

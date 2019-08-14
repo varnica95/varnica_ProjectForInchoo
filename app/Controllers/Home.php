@@ -4,11 +4,11 @@ namespace Controllers;
 
 use Core\Controller;
 
-class Registration extends Controller
+class Home extends Controller
 {
     public function index()
     {
-        $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
+        $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
         $this->view->render();
     }
 }

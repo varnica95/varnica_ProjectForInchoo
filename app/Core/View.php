@@ -15,9 +15,10 @@ class View
 
     public function render()
     {
-        if(file_exists('../app/View/' . $this->view_file . '.phtml'))
+        echo "!!!... " . $this->view_file . " ...!!!";
+        if(file_exists('../app/Views/' . $this->view_file . '.phtml'))
         {
-            require '../app/View/' . $this->view_file . '.phtml';
+            require '../app/Views/' . $this->view_file . '.phtml';
         }
     }
 }
