@@ -18,7 +18,8 @@ class User extends Database
     {
         $conn = Database::getInstance()->getPDO();
 
-        $sql = 'INSERT INTO users(fname, lname, email, username, pwd) VALUES (:firstname, :lastname, :email, :username, :pwd)';
+        $sql = 'INSERT INTO users(fname, lname, email, username, pwd) 
+                VALUES (:firstname, :lastname, :email, :username, :pwd)';
         $stmt = $conn->prepare($sql);
 
         $stmt->bindValue(':firstname', $this->firstname);

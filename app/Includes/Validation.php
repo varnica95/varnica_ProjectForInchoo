@@ -2,7 +2,7 @@
 
 namespace Includes;
 
-class Validation
+class Validation implements iValidation
 {
     private $_passed = false,
             $_errors = array();
@@ -37,7 +37,11 @@ class Validation
 
     public function checkUsername()
     {
-        if (!preg_match("/^[a-zA-Z0-9]*$/", $this->username))
+        if (strlen($this->username) < 5)
+        {
+            $this->addError('Minimum username lenght is 5.');
+        }
+        else if (!preg_match("/^[a-zA-Z0-9]*$/", $this->username))
         {
             $this->addError('Please enter a valid username.');
         }
@@ -53,7 +57,20 @@ class Validation
 
     public function checkPassword()
     {
-        if ($this->pwd !== $this->pwdRepeat)
+
+        if (strlen($this->pwd) < 5)
+        {
+            $this->addError('Minimum password lenght is 5.');
+        }
+        else if(!preg_match("#[0-9]+#", $this->pwd))
+        {
+            $this->addError('Password must contain a number.');
+        }
+        else if(!preg_match("#[A-Z]+#", $this->pwd))
+        {
+            $this->addError('Password must contain a capital number.');
+        }
+        else if ($this->pwd !== $this->pwdRepeat)
         {
             $this->addError('Passwords do not match.');
         }
