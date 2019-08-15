@@ -83,6 +83,7 @@ class Validation implements iValidation
             $this->_passed = true;
         }
     }
+
     private function addError($error)
     {
         $this->_errors[] = $error;
