@@ -49,6 +49,41 @@ class User extends Database
         }
     }
 
+    public function userLogin()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT * FROM users WHERE username = :username OR email = :email';
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindValue(':username', $this->userOrEmail);
+            $stmt->bindValue(':email', $this->userOrEmail);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($stmt->rowCount() > 0)
+            {
+                $passwordCheck = password_verify($this->pwd, $row->pwd);
+                if (!$passwordCheck)
+                {
+                    $this->addError('Wrong password');
+                }
+                else
+                {
+                    echo "ok";
+                }
+            }
+            else
+            {
+                $this->addError('Wrong username');
+            }
+
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
+
     private function UserAlreadyExists()
     {
         $conn = Database::getInstance()->getPDO();

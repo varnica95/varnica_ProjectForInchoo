@@ -1,6 +1,6 @@
 <?php
+session_start();
 
-//Autoloading every .php file
 use Models\Config;
 
 spl_autoload_register(function($class) {
