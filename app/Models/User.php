@@ -71,9 +71,8 @@ class User extends Database
                 }
                 else
                 {
-                    //Session::start();
-                    session_start();
-                    Session::set('id', $row->id);
+                    Session::start();
+                    Session::set($row);
                 }
             }
             else

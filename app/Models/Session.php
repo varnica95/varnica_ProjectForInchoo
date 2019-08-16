@@ -10,8 +10,9 @@ class Session
     {
         session_start();
     }
-    public static function set($key, $value)
+    public static function set($row)
     {
+        foreach ($row as $key => $value)
         $_SESSION[$key] = $value;
     }
 
@@ -21,6 +22,11 @@ class Session
         session_unset();
 
         session_destroy();
+    }
+
+    public static function get($key)
+    {
+        return $_SESSION[$key];
     }
 
 

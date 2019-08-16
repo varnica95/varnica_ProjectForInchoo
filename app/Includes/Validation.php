@@ -22,7 +22,7 @@ class Validation implements iValidation
         if(empty($this->firstname) || empty($this->lastname) || empty($this->email) ||
             empty($this->username) || empty($this->pwd) || empty($this->pwdRepeat))
         {
-            $this->addError('Fields cannot be empty. Please fill out empty fields.');
+            $this->addError('emptyFields', 'Fields cannot be empty. Please fill out empty fields.');
         }
     }
 
@@ -31,7 +31,7 @@ class Validation implements iValidation
         if (!preg_match("/^([a-zA-Z' ]+)$/", $this->firstname) ||
             !preg_match("/^([a-zA-Z' ]+)$/", $this->lastname))
         {
-            $this->addError('Please enter a valid first name or last name.');
+            $this->addError('flName', 'Please enter a valid first name or last name.');
         }
     }
 
@@ -39,11 +39,11 @@ class Validation implements iValidation
     {
         if (strlen($this->username) < 5)
         {
-            $this->addError('Minimum username lenght is 5.');
+            $this->addError('username', 'Minimum username lenght is 5.');
         }
         else if (!preg_match("/^[a-zA-Z0-9]*$/", $this->username))
         {
-            $this->addError('Please enter a valid username.');
+            $this->addError('username', 'Please enter a valid username.');
         }
     }
 
@@ -51,7 +51,7 @@ class Validation implements iValidation
     {
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL))
         {
-            $this->addError('Please enter a valid email.');
+            $this->addError('email', 'Please enter a valid email.');
         }
     }
 
@@ -60,19 +60,19 @@ class Validation implements iValidation
 
         if (strlen($this->pwd) < 5)
         {
-            $this->addError('Minimum password lenght is 5.');
+            $this->addError('pwd', 'Minimum password lenght is 5.');
         }
         else if(!preg_match("#[0-9]+#", $this->pwd))
         {
-            $this->addError('Password must contain a number.');
+            $this->addError('pwd','Password must contain a number.');
         }
         else if(!preg_match("#[A-Z]+#", $this->pwd))
         {
-            $this->addError('Password must contain a capital number.');
+            $this->addError('pwd', 'Password must contain a capital number.');
         }
         else if ($this->pwd !== $this->pwdRepeat)
         {
-            $this->addError('Passwords do not match.');
+            $this->addError('pwd','Passwords do not match.');
         }
     }
 
@@ -84,9 +84,9 @@ class Validation implements iValidation
         }
     }
 
-    private function addError($error)
+    private function addError($key, $error)
     {
-        $this->_errors[] = $error;
+        $this->_errors[$key] = $error;
     }
 
     public function getErrors()

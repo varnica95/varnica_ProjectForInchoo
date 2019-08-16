@@ -22,6 +22,7 @@ class Login extends Controller
 
             $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
             $this->view->render();
+            var_dump($_SESSION);
         }
     }
 }
