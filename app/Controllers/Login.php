@@ -17,10 +17,11 @@ class Login extends Controller
     {
         if (isset($_POST['login-submit']))
         {
-            var_dump($_POST);
             $newUser = new User($_POST);
             $newUser->userLogin();
-           var_dump($newUser->getErrors());
+
+            $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
+            $this->view->render();
         }
     }
 }

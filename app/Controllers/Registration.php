@@ -22,7 +22,7 @@ class Registration extends Controller
                 $newUser = new User($_POST);
                 $newUser->newUser();
             } else {
-                echo "nemaaa";
+                $this->index();
                 var_dump($validation->getErrors());
             }
         }
