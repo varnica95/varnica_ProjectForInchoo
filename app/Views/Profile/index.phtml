@@ -1,0 +1,23 @@
+<?php require '../app/Views/header.phtml' ?>
+    <h1>Profile Page</h1>
+
+    <form class="signup-form" action="/Profile/update" method="POST">
+        <input type="text" name="firstname" placeholder="Firstname" value="<?php echo Models\Session::get('fname'); ?>" readonly>
+        <input type="text" name="lastname" placeholder="Lastname"   value="<?php echo Models\Session::get('lname');  ?>" readonly>
+        <input type="text" name="email" placeholder="E-mail"        value="<?php echo Models\Session::get('email');  ?>" readonly>
+        <input type="text" name="username" placeholder="Username"   value="<?php echo Models\Session::get('username');  ?>" readonly> <br>
+        <br><a>Change your password:</a>
+        <input type="password" name="pwd" placeholder="Enter new password" >
+        <input type="password" name="pwdOld" placeholder="Enter old password to confirm" >
+        <button type="submit" name="update-submit">Update</button>
+    </form>
+
+    <form class="signup-form" action="" method="post" enctype="multipart/form-data">
+        <input type="text" name="filename" placeholder="Filename...">
+        <input type="text" name="filetitle" placeholder="Image title...">
+        <input type="text" name="filedesc" placeholder="Image description...">
+        <input type="file" name="file">
+        <button type="submit" name="submit">Upload</button>
+    </form>
+
+<?php require '../app/Views/footer.phtml' ?>

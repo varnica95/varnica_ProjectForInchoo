@@ -2,6 +2,9 @@
 
 namespace Models;
 use PDO;
+
+session_start();
+
 class User extends Database
 {
 
@@ -32,7 +35,7 @@ class User extends Database
                 VALUES (:firstname, :lastname, :email, :username, :pwd)';
                 $stmt = $conn->prepare($sql);
 
-                $hashedPassword = password_hash($this->pwd, PASSWORD_DEFAULT);;
+                $hashedPassword = password_hash($this->pwd, PASSWORD_DEFAULT);
 
                 $stmt->bindValue(':firstname', $this->firstname);
                 $stmt->bindValue(':lastname', $this->lastname);
@@ -114,6 +117,26 @@ class User extends Database
         if ($stmt->rowCount() > 0)
         {
             $this->addError('Email ' . $this->email . ' is already in database.' );
+        }
+    }
+
+    public function updateProfile()
+    {
+        if( password_verify($this->pwd, Session::get('pwd'))){
+            $this->addError('Passwords do not match.');
+        }else {
+            echo "tu sam";
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'UPDATE users SET pwd = :pwd WHERE id = :id';
+
+            $stmt = $conn->prepare($sql);
+
+            $hashedPassword = password_hash($this->pwd, PASSWORD_DEFAULT);
+
+            $stmt->bindValue(':pwd', $hashedPassword);
+            $stmt->bindValue(':id', Session::get('id'));
+            $stmt->execute();
         }
     }
 

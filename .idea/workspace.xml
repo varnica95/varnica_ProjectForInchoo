@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da4c3722-9418-4339-b782-25cc25e38f0b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/Profile/index.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Includes/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/Validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Home/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Home/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Login/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Login/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Logout/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Logout/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Registration/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Registration/index.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/header.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +75,7 @@
       <workItem from="1565806223501" duration="8804000" />
       <workItem from="1565852492158" duration="5726000" />
       <workItem from="1565872997636" duration="3688000" />
-      <workItem from="1565934551027" duration="9165000" />
+      <workItem from="1565934551027" duration="15800000" />
     </task>
     <servers />
   </component>
