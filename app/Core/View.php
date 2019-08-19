@@ -13,11 +13,43 @@ class View
         $this->view_data = $view_data;
     }
 
-    public function render()
+    public function render($templateFile, array $vars = [])
     {
-        if(file_exists('../app/Views/' . $this->view_file . '.phtml'))
-        {
-            require '../app/Views/' . $this->view_file . '.phtml';
+//        if (file_exists('../app/Views/' . $this->view_file . '.phtml')) {
+//            require '../app/Views/' . $this->view_file . '.phtml';
+//        }
+        if (file_exists(BP . '/app/Views/' . $templateFile)) {
+            ob_start();
+            try {
+                extract($vars, EXTR_SKIP);
+                include  BP . '/app/Views/' . $templateFile;
+            } catch (\Exception $e) {
+                ob_end_clean();
+                throw $e;
+            }
         }
+
+        $output = ob_get_clean();
+
+        return $output;
+    }
+
+    public function renderErrors($errors)
+    {
+
+        if (file_exists(BP . '/app/Views/' . $this->view_file . '.phtml')) {
+            ob_start();
+            try {
+                extract($errors, EXTR_SKIP);
+                require BP.  '/app/Views/' . $this->view_file . '.phtml';
+            } catch (\Exception $e) {
+                ob_end_clean();
+                throw $e;
+            }
+        }
+
+        $output = ob_get_clean();
+
+        return $output;
     }
 }

@@ -11,7 +11,7 @@ class Profile extends Controller
     public function index()
     {
         $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
-        $this->view->render();
+        echo $this->view->render('Profile/index.phtml');
     }
 
     public function update()

@@ -12,7 +12,7 @@ class Logout extends Controller
     public function index()
     {
         $this->view('Logout' . DIRECTORY_SEPARATOR . 'index');
-        $this->view->render();
+        echo $this->view->render('Logout/index.phtml');
     }
 
     public function logout()

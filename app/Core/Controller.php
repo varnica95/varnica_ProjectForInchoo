@@ -9,7 +9,6 @@ class Controller
     public function view($viewName, $data = array())
     {
         $this->view = new View($viewName, $data);
-
         return $this->view;
     }
 }

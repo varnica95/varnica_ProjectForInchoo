@@ -1,10 +1,10 @@
 <?php
-
+define('BP', dirname(__DIR__));
 use Models\Config;
 
 spl_autoload_register(function($class) {
     $file = str_replace('\\', '/', $class);
-    require_once '../app/' .$file . '.php';
+    require_once BP . '/app/' .$file . '.php';
 });
 
 

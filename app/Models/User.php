@@ -74,17 +74,20 @@ class User extends Database
                 $passwordCheck = password_verify($this->pwd, $row->pwd);
                 if (!$passwordCheck)
                 {
-                    $this->addError('pwd', 'Wrong password.');
+                    $this->addError('wrongpassword', 'Wrong password.');
+                    return false;
                 }
                 else
                 {
                     Session::start();
                     Session::set('id', $row->id);
+                    return true;
                 }
             }
             else
             {
-                $this->addError('user', 'Wrong username.');
+                $this->addError('wrongusername', 'Wrong username.');
+                return false;
             }
 
         }catch (\PDOException $e){

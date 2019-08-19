@@ -1,10 +1,25 @@
-<?php require '../app/Views/header.phtml' ?>
+<?php require '../app/Views/header.phtml' ;
+if (!isset($_SESSION))
+    session_start();
+
+echo $test;
+?>
 <h1>Login Page</h1>
 
 <form class="signup-form" action="/Login/userLogin" method="POST">
     <input type="text" name="userOrEmail" placeholder="Username or email">
+    <div> <?php if (isset($_SESSION['error']['wrongusername']))
+            echo \Models\Session::getStr('error', 'wrongusername');
+        ?>
+    </div>
     <input type="password" name="pwd" placeholder="Password">
+    <div>
+        <?php if (isset($_SESSION['error']['wrongpassword']))
+            echo \Models\Session::getStr('error', 'wrongpassword');
+        ?>
+    </div>
     <button type="submit" name="login-submit">Login</button>
 </form>
 
+<?php \Models\Session::destroy() ?>
 <?php require '../app/Views/footer.phtml' ?>

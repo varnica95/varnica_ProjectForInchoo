@@ -2,7 +2,11 @@
 
 namespace Controllers;
 
+if (!isset($_SESSION))
+session_start();
+
 use Core\Controller;
+use Models\Session;
 use Models\User;
 
 class Login extends Controller
@@ -10,7 +14,7 @@ class Login extends Controller
     public function index()
     {
         $this->view('Login' . DIRECTORY_SEPARATOR . 'index');
-        $this->view->render();
+        echo $this->view->render('Login/index.phtml');
     }
 
     public function userLogin()
@@ -18,11 +22,15 @@ class Login extends Controller
         if (isset($_POST['login-submit']))
         {
             $user = new User($_POST);
-            $user->userLogin();
+            if(!$user->userLogin())
+            {
+              //  Session::set('error', $user->getErrors());
 
-            $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
-            $this->view->render();
-            var_dump($_SESSION);
+                $this->view('Login' . DIRECTORY_SEPARATOR . 'index');
+            }else {
+                $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
+                echo $this->view->render('Home/index.phtml');
+            }
         }
     }
 }

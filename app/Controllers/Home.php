@@ -10,6 +10,6 @@ class Home extends Controller
     {
 
         $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
-        $this->view->render();
+        echo $this->view->render('Home/index.phtml');
     }
 }

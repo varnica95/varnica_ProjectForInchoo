@@ -19,7 +19,9 @@ class Session
 
     public static function destroy()
     {
+        if (!isset($_SESSION))
         session_start();
+
         session_unset();
 
         session_destroy();
@@ -29,6 +31,12 @@ class Session
     {
         return $_SESSION[$key];
     }
+
+    public static function getStr($key1, $key2)
+    {
+        return $_SESSION[$key1][$key2];
+    }
+
 
 
 

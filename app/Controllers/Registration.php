@@ -11,7 +11,7 @@ class Registration extends Controller
     public function index()
     {
         $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
-        $this->view->render();
+        echo $this->view->render('Registration/index.phtml');
     }
 
     public function createNew()
