@@ -1,13 +1,14 @@
 <?php
 
 namespace Models;
+use Includes\tErrorHandler;
 use PDO;
 
 session_start();
 
 class User extends Database
 {
-
+    use tErrorHandler;
     private $_passed = false,
             $_errors = array();
 
@@ -70,7 +71,7 @@ class User extends Database
                 $passwordCheck = password_verify($this->pwd, $row->pwd);
                 if (!$passwordCheck)
                 {
-                    $this->addError('Wrong password');
+                    $this->addError('pwd', 'Wrong password.');
                 }
                 else
                 {
@@ -80,7 +81,7 @@ class User extends Database
             }
             else
             {
-                $this->addError('Wrong username');
+                $this->addError('user', 'Wrong username.');
             }
 
         }catch (\PDOException $e){
@@ -100,7 +101,7 @@ class User extends Database
 
         if ($stmt->rowCount() > 0)
         {
-            $this->addError('Username ' . $this->username . ' is already in database.' );
+            $this->addError('userExists', 'Username ' . $this->username . ' is already in database.' );
         }
     }
 
@@ -116,14 +117,14 @@ class User extends Database
 
         if ($stmt->rowCount() > 0)
         {
-            $this->addError('Email ' . $this->email . ' is already in database.' );
+            $this->addError('emailExists','Email ' . $this->email . ' is already in database.' );
         }
     }
 
     public function updateProfile()
     {
         if( password_verify($this->pwd, Session::get('pwd'))){
-            $this->addError('Passwords do not match.');
+            $this->addError('pwdMatch', 'Passwords do not match.');
         }else {
             echo "tu sam";
             $conn = Database::getInstance()->getPDO();
@@ -138,28 +139,5 @@ class User extends Database
             $stmt->bindValue(':id', Session::get('id'));
             $stmt->execute();
         }
-    }
-
-    private function isPassed()
-    {
-        if(empty($this->_errors))
-        {
-            $this->_passed = true;
-        }
-    }
-
-    private function addError($error)
-    {
-        $this->_errors[] = $error;
-    }
-
-    public function getErrors()
-    {
-        return $this->_errors;
-    }
-
-    public function getPass()
-    {
-        return $this->_passed;
     }
 }
