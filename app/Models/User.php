@@ -4,6 +4,7 @@ namespace Models;
 use Includes\tErrorHandler;
 use PDO;
 
+if (!isset($_SESSION))
 session_start();
 
 class User extends Database
@@ -11,6 +12,8 @@ class User extends Database
     use tErrorHandler;
     private $_passed = false,
             $_errors = array();
+
+    public $_userRow, $_curPassword;
 
     public function __construct($params = [])
     {
@@ -76,7 +79,7 @@ class User extends Database
                 else
                 {
                     Session::start();
-                    Session::set($row);
+                    Session::set('id', $row->id);
                 }
             }
             else
@@ -121,23 +124,62 @@ class User extends Database
         }
     }
 
-    public function updateProfile()
+    public function showProfile()
     {
-        if( password_verify($this->pwd, Session::get('pwd'))){
-            $this->addError('pwdMatch', 'Passwords do not match.');
-        }else {
-            echo "tu sam";
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT fname, lname, email, username  FROM users WHERE id = :id';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':id', $_SESSION['id']);
+            $stmt->execute();
+
+            $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
+
+    public function getPassword()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT pwd FROM users WHERE id = :id';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':id', $_SESSION['id']);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_OBJ)->pwd;
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
+
+    public function updatePassword()
+    {
+        try{
             $conn = Database::getInstance()->getPDO();
 
             $sql = 'UPDATE users SET pwd = :pwd WHERE id = :id';
 
             $stmt = $conn->prepare($sql);
-
-            $hashedPassword = password_hash($this->pwd, PASSWORD_DEFAULT);
-
-            $stmt->bindValue(':pwd', $hashedPassword);
-            $stmt->bindValue(':id', Session::get('id'));
-            $stmt->execute();
+            $passwordCheck = password_verify($this->pwd_curr, $this->getPassword());
+            if (!$passwordCheck)
+            {
+                $this->addError('pwd', 'Wrong password.');
+                echo "tu sam";
+            }else {
+                $hashedPassword = password_hash($this->pwd_new, PASSWORD_DEFAULT);
+                $stmt->bindValue(':pwd', $hashedPassword);
+                $stmt->bindValue(':id', $_SESSION['id']);
+                $stmt->execute();
+            }
+        }catch (\PDOException $e){
+            $e->getMessage();
         }
     }
+
 }

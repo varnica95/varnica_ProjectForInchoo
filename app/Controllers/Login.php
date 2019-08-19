@@ -17,8 +17,8 @@ class Login extends Controller
     {
         if (isset($_POST['login-submit']))
         {
-            $newUser = new User($_POST);
-            $newUser->userLogin();
+            $user = new User($_POST);
+            $user->userLogin();
 
             $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
             $this->view->render();

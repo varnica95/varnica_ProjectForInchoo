@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
+use Includes\ProfileValidation;
 use Models\User;
 
 class Profile extends Controller
@@ -15,16 +16,17 @@ class Profile extends Controller
 
     public function update()
     {
-        if (isset($_POST['update-submit']))
-        {
-            echo "z";
-            $update = new User($_POST);
-            $update->updateProfile();
-            var_dump($update->getErrors());
-            $this->index();
-        }else{
+        if (isset($_POST['update-submit'])) {
+            $validation = new ProfileValidation($_POST);
+            if ($validation->getPass()) {
+                $profile = new User($_POST);
 
+                $profile->updatePassword();
+
+            } else {
+                $this->index();
+                var_dump($validation->getErrors());
+            }
         }
     }
-
 }

@@ -1,14 +1,24 @@
 <?php require '../app/Views/header.phtml' ?>
+
+<?php
+use Models\User;
+
+$info = new User();
+$info->showProfile();
+var_dump($info->_userRow);
+
+?>
     <h1>Profile Page</h1>
 
     <form class="signup-form" action="/Profile/update" method="POST">
-        <input type="text" name="firstname" placeholder="Firstname" value="<?php echo Models\Session::get('fname'); ?>" readonly>
-        <input type="text" name="lastname" placeholder="Lastname"   value="<?php echo Models\Session::get('lname');  ?>" readonly>
-        <input type="text" name="email" placeholder="E-mail"        value="<?php echo Models\Session::get('email');  ?>" readonly>
-        <input type="text" name="username" placeholder="Username"   value="<?php echo Models\Session::get('username');  ?>" readonly> <br>
+        <input type="text" name="firstname" placeholder="Firstname" value="<?php echo $info->_userRow->fname ?>" readonly>
+        <input type="text" name="lastname" placeholder="Lastname"   value="<?php echo $info->_userRow->lname  ?>" readonly>
+        <input type="text" name="email" placeholder="E-mail"        value="<?php echo $info->_userRow->email  ?>" readonly>
+        <input type="text" name="username" placeholder="Username"   value="<?php echo $info->_userRow->username  ?>" readonly> <br>
         <br><a>Change your password:</a>
-        <input type="password" name="pwd" placeholder="Enter new password" >
-        <input type="password" name="pwdOld" placeholder="Enter old password to confirm" >
+        <input type="password" name="pwd_curr" placeholder="Enter current password" >
+        <input type="password" name="pwd_new" placeholder="Enter new password" >
+        <input type="password" name="pwd_rep" placeholder="Enter old password to confirm" >
         <button type="submit" name="update-submit">Update</button>
     </form>
 

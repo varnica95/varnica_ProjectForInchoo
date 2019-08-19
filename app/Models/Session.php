@@ -11,10 +11,10 @@ class Session
         if (!isset($_SESSION))
         session_start();
     }
-    public static function set($row)
+    public static function set($name, $key)
     {
-        foreach ($row as $key => $value)
-        $_SESSION[$key] = $value;
+       // foreach ($k as $key => $value)
+        $_SESSION[$name] = $key;
     }
 
     public static function destroy()
