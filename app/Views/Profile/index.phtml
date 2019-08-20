@@ -9,22 +9,25 @@ $info->showProfile();
 ?>
     <h1>Profile Page</h1>
 
-    <form class="signup-form" action="/Profile/update" method="POST">
+    <form style="float:left;margin-left:50px;" class="signup-form" action="/Profile/update" method="POST">
         <input type="text" name="firstname" placeholder="Firstname" value="<?php echo $info->_userRow->fname ?>" readonly>
         <input type="text" name="lastname" placeholder="Lastname"   value="<?php echo $info->_userRow->lname  ?>" readonly>
         <input type="text" name="email" placeholder="E-mail"        value="<?php echo $info->_userRow->email  ?>" readonly>
         <input type="text" name="username" placeholder="Username"   value="<?php echo $info->_userRow->username  ?>" readonly> <br>
         <br><a>Change your password:</a>
+        <?php if(isset($pwsuccess)) echo '<div class="alert alert-success" role="alert">' . $pwsuccess . '</div>'; ?>
         <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
+        <?php if(isset($curPwError['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $curPwError['pwd'] . '</div>'; ?>
         <input type="password" name="pwd_curr" placeholder="Enter current password" >
-        <?php if(isset($error['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $error['pwd'] . '</div>'; ?>
         <input type="password" name="pwd_new" placeholder="Enter new password" >
         <input type="password" name="pwd_rep" placeholder="Enter old password to confirm" >
         <?php if(isset($errors['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $errors['pwd'] . '</div>'; ?>
         <button type="submit" name="update-submit">Update</button>
     </form>
 
-    <form class="signup-form" action="/Profile/upload" method="post" enctype="multipart/form-data">
+    <form style="float:right;margin-right:50px;" class="signup-form" action="/Profile/upload" method="post" enctype="multipart/form-data">
+        <?php if(isset($imgsuccess)) echo '<div class="alert alert-success" role="alert">' . $imgsuccess . '</div>'; ?>
+        <?php if(isset($fileerrors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['emptyFields'] . '</div>'; ?>
         <input type="text" name="filename" placeholder="Filename">
         <input type="text" name="filetitle" placeholder="Image title">
         <input type="text" name="filedesc" placeholder="Image description">

@@ -189,7 +189,7 @@ class User extends Database
             $passwordCheck = password_verify($this->pwd_curr, $this->getPassword());
             if (!$passwordCheck)
             {
-                $this->addError('pwd1', 'Wrong password.');
+                $this->addError('pwd', 'Wrong password.');
             }else {
                 $hashedPassword = password_hash($this->pwd_new, PASSWORD_DEFAULT);
                 $stmt->bindValue(':pwd', $hashedPassword);

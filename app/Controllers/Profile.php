@@ -28,16 +28,25 @@ class Profile extends Controller
 
                 $profile->updatePassword();
 
-                $this->_error = $profile->getErrors();
-
-                $this->index();
+                if(!empty($profile->getErrors()))
+                {
+                    $this->_error = $profile->getErrors();
+                    $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                    echo $this->view->render('Profile/index.phtml', [
+                        'curPwError' => $this->_error
+                    ]);
+                }else {
+                    $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                    echo $this->view->render('Profile/index.phtml', [
+                        'pwsuccess' => 'Password updated successfully.'
+                    ]);
+                }
 
             } else {
                 $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Profile/index.phtml', [
-                    'errors' => [$validation->getErrors(),
-                        $this->_error
-                    ]
+                    'errors' => $validation->getErrors(),
+                    'pwerror' => $this->_error
                 ]);
 
             }
@@ -69,26 +78,27 @@ class Profile extends Controller
 
                 if (in_array($fileActualExt, $allowed)) {
                     if ($fileError === 0) {
-                        if ($fileSize < 2000000){
-                            $imageFullName = $newFileName . "." . uniqid("", true) . "." . $fileActualExt;
-                            $fileDestination = BP . '/public/img/' . $imageFullName;
-                            $info = new User();
-                            $uploader = $info->getUsername();
+                        $imageFullName = $newFileName . "." . uniqid("", true) . "." . $fileActualExt;
+                        $fileDestination = BP . '/public/img/' . $imageFullName;
+                        $info = new User();
+                        $uploader = $info->getUsername();
 
-                            $image = new Gallery(Session::get('id'), $uploader->username, $imageTitle, $imageDesc, $imageFullName);
-                            $image->uploadImage();
-                            move_uploaded_file($fileTempName, $fileDestination);
-                            $this->index();
-                        }else{
-                            echo 'filesize too long';
-                        }
-                    }else{
-                        echo "You had an error.";
+                        $image = new Gallery(Session::get('id'), $uploader->username, $imageTitle, $imageDesc, $imageFullName);
+                        $image->uploadImage();
+                        move_uploaded_file($fileTempName, $fileDestination);
+                        $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                        echo $this->view->render('Profile/index.phtml', [
+                            'imgsuccess' => 'Image uploaded successfully.'
+                            ]);
                     }
                 }
 
-
-                }
+            }else{
+                $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                echo $this->view->render('Profile/index.phtml',[
+                    'fileerrors' => $validation->getErrors()
+                ]);
             }
+        }
     }
 }

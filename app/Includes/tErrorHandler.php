@@ -14,7 +14,7 @@ trait tErrorHandler
         }
     }
 
-    private function addError($key, $error)
+    public function addError($key, $error)
     {
         $this->_errors[$key] = $error;
     }
