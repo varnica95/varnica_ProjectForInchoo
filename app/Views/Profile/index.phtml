@@ -5,7 +5,6 @@ use Models\User;
 
 $info = new User();
 $info->showProfile();
-var_dump($info->_userRow);
 
 ?>
     <h1>Profile Page</h1>
@@ -16,9 +15,12 @@ var_dump($info->_userRow);
         <input type="text" name="email" placeholder="E-mail"        value="<?php echo $info->_userRow->email  ?>" readonly>
         <input type="text" name="username" placeholder="Username"   value="<?php echo $info->_userRow->username  ?>" readonly> <br>
         <br><a>Change your password:</a>
+        <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
         <input type="password" name="pwd_curr" placeholder="Enter current password" >
+        <?php if(isset($error['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $error['pwd'] . '</div>'; ?>
         <input type="password" name="pwd_new" placeholder="Enter new password" >
         <input type="password" name="pwd_rep" placeholder="Enter old password to confirm" >
+        <?php if(isset($errors['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $errors['pwd'] . '</div>'; ?>
         <button type="submit" name="update-submit">Update</button>
     </form>
 

@@ -19,7 +19,6 @@ class Logout extends Controller
     {
         Session::destroy();
 
-        $this->view('Logout' . DIRECTORY_SEPARATOR . 'index');
-        $this->view->render();
+        $this->index();
     }
 }

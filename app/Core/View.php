@@ -33,23 +33,4 @@ class View
 
         return $output;
     }
-
-    public function renderErrors($errors)
-    {
-
-        if (file_exists(BP . '/app/Views/' . $this->view_file . '.phtml')) {
-            ob_start();
-            try {
-                extract($errors, EXTR_SKIP);
-                require BP.  '/app/Views/' . $this->view_file . '.phtml';
-            } catch (\Exception $e) {
-                ob_end_clean();
-                throw $e;
-            }
-        }
-
-        $output = ob_get_clean();
-
-        return $output;
-    }
 }

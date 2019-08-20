@@ -22,8 +22,10 @@ class Registration extends Controller
                 $newUser = new User($_POST);
                 $newUser->newUser();
             } else {
-                $this->index();
-                var_dump($validation->getErrors());
+                $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
+                echo $this->view->render('Registration/index.phtml', [
+                    'errors' => $validation->getErrors()
+                ]);
             }
         }
 

@@ -24,9 +24,11 @@ class Login extends Controller
             $user = new User($_POST);
             if(!$user->userLogin())
             {
-              //  Session::set('error', $user->getErrors());
 
                 $this->view('Login' . DIRECTORY_SEPARATOR . 'index');
+                echo $this->view->render('Login/index.phtml', [
+                   'errors' => $user->getErrors(),
+                ]);
             }else {
                 $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Home/index.phtml');

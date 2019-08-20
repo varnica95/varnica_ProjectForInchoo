@@ -33,19 +33,19 @@ class ProfileValidation
 
         if (strlen($this->pwd_new) < 5)
         {
-            $this->addError('pwdMin', 'Minimum password lenght is 5.');
+            $this->addError('pwd', 'Minimum password lenght is 5.');
         }
         else if(!preg_match("#[0-9]+#", $this->pwd_curr))
         {
-            $this->addError('pwdNum','Password must contain a number.');
+            $this->addError('pwd','Password must contain a number.');
         }
         else if(!preg_match("#[A-Z]+#", $this->pwd_curr))
         {
-            $this->addError('pwdCap', 'Password must contain a capital number.');
+            $this->addError('pwd', 'Password must contain a capital number.');
         }
         else if ($this->pwd_new !== $this->pwd_rep)
         {
-            $this->addError('pwdMatch','Passwords do not match.');
+            $this->addError('pwd','Passwords do not match.');
         }
     }
 

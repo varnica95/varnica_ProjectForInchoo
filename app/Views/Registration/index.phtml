@@ -1,13 +1,19 @@
 <?php require '../app/Views/header.phtml' ?>
 <h1>Registration Page</h1>
 
+
 <form class="signup-form" action="/Registration/createNew" method="POST">
+    <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
     <input type="text" name="firstname" placeholder="Firstname">
     <input type="text" name="lastname" placeholder="Lastname">
+    <?php if(isset($errors['flName'])) echo '<div class="alert alert-danger" role="alert">' . $errors['flName'] . '</div>'; ?>
     <input type="text" name="email" placeholder="E-mail">
+    <?php if(isset($errors['email'])) echo '<div class="alert alert-danger" role="alert">' . $errors['email'] . '</div>'; ?>
     <input type="text" name="username" placeholder="Username">
+    <?php if(isset($errors['username'])) echo '<div class="alert alert-danger" role="alert">' . $errors['username'] . '</div>'; ?>
     <input type="password" name="pwd" placeholder="Password">
     <input type="password" name="pwdRepeat" placeholder="Repeat password">
+    <?php if(isset($errors['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $errors['pwd'] . '</div>'; ?>
     <button type="submit" name="signup-submit">Sign up</button>
 </form>
 

@@ -8,6 +8,7 @@ use Models\User;
 
 class Profile extends Controller
 {
+    public $_error;
     public function index()
     {
         $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
@@ -23,9 +24,18 @@ class Profile extends Controller
 
                 $profile->updatePassword();
 
-            } else {
+                $this->_error = $profile->getErrors();
+
                 $this->index();
-                var_dump($validation->getErrors());
+
+            } else {
+                $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                echo $this->view->render('Profile/index.phtml', [
+                    'errors' => [$validation->getErrors(),
+                            $this->_error
+                    ]
+                ]);
+
             }
         }
     }
