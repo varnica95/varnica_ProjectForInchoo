@@ -1,3 +1,3 @@
 #Don't track content of these folders
 app/Core/environment.php
-/.idea
+.idea
