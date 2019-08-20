@@ -2,8 +2,6 @@
 
 namespace Includes;
 
-use Models\User;
-
 class ProfileValidation
 {
     use tErrorHandler;

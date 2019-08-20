@@ -135,10 +135,27 @@ class User extends Database
             $sql = 'SELECT fname, lname, email, username  FROM users WHERE id = :id';
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(':id', $_SESSION['id']);
+            $stmt->bindValue(':id', Session::get('id'));
             $stmt->execute();
 
             $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
+
+    public function getUsername()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT username  FROM users WHERE id = :id';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':id', Session::get('id'));
+            $stmt->execute();
+
+            return $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
         }catch (\PDOException $e){
             $e->getMessage();
         }
