@@ -21,6 +21,7 @@ class Registration extends Controller
             if ($validation->getPass()) {
                 $newUser = new User($_POST);
                 $newUser->newUser();
+                $this->index();
             } else {
                 $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Registration/index.phtml', [

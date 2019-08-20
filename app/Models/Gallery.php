@@ -41,4 +41,21 @@ class Gallery extends Database
         }
     }
 
+    public static function getGallery()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT * FROM gallery ORDER BY id DESC';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
+
 }
