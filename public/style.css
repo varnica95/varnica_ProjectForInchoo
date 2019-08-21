@@ -52,3 +52,13 @@ nav ul li a{
     color: white;
     cursor: pointer;
 }
+
+img{
+    transition: transform .2s;
+}
+
+img:hover {
+    -ms-transform: scale(2);
+    -webkit-transform: scale(2);
+    transform: scale(2);
+}

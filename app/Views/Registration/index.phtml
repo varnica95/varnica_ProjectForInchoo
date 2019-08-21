@@ -3,6 +3,7 @@
 
 
 <form class="signup-form" action="/Registration/createNew" method="POST">
+    <?php if(isset($success)) echo '<div class="alert alert-success" role="alert">' . $success . '</div>'; ?>
     <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
     <input type="text" name="firstname" placeholder="Firstname">
     <input type="text" name="lastname" placeholder="Lastname">

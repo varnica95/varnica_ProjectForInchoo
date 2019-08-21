@@ -2,12 +2,7 @@
 
 <h1>Gallery Page</h1>
 
-<?php
-if(empty($gallery))
-    echo '<div class="alert alert-dark" role="alert">There are no images yet. Please go to the profile page and upload an image.</div>';
 
-if(isset($gallery))
-    foreach ($gallery as $key => $value):?>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -24,6 +19,12 @@ if(isset($gallery))
                     </thead>
                     <tbody>
                     <tr>
+                        <?php
+                        if(empty($gallery))
+                            echo '<div class="alert alert-dark" role="alert">There are no images yet. Please go to the profile page and upload an image.</div>';
+
+                        if(isset($gallery))
+                        foreach ($gallery as $key => $value):?>
                         <th scope="row"><?php echo $key; ?></th>
                         <td class="w-25">
                             <img src="<?php echo '/img/' . $value->imgFullNameGallery ?>" class="img-fluid img-thumbnail" alt="Image">
