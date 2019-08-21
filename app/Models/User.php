@@ -169,7 +169,7 @@ class User extends Database
             $sql = 'SELECT pwd FROM users WHERE id = :id';
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(':id', $_SESSION['id']);
+            $stmt->bindValue(':id', Session::get('id'));
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_OBJ)->pwd;
@@ -201,4 +201,24 @@ class User extends Database
         }
     }
 
+    public static function deleteAccount()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'DELETE a.*, b.* FROM users a
+                    LEFT JOIN gallery b
+                    ON b.uploaderid = a.id
+                    WHERE a.id = :id
+                    ';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindValue(':id', Session::get('id'));
+            $stmt->execute();
+
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
 }

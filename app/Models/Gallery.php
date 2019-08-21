@@ -92,4 +92,23 @@ class Gallery extends Database
             $e->getMessage();
         }
     }
+
+    public static function getImageNames()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT * FROM gallery WHERE uploaderid = :uploaderid';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindValue(':uploaderid', Session::get('id'));
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        }catch (\PDOException $e)
+        {
+            $e->getMessage();
+        }
+    }
 }

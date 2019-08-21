@@ -31,7 +31,9 @@ class Login extends Controller
                 ]);
             }else {
                 $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
-                echo $this->view->render('Home/index.phtml');
+                echo $this->view->render('Home/index.phtml', [
+                    'success' => 'Welcome. You are now logged in.'
+                    ]);
             }
         }
     }

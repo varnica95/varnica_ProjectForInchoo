@@ -5,9 +5,14 @@ namespace Controllers;
 use Core\Controller;
 use Includes\ImageValidation;
 use Includes\ProfileValidation;
+use Includes\DeleteValidation;
 use Models\Gallery;
 use Models\Session;
 use Models\User;
+
+if (!isset($_SESSION))
+    session_start();
+
 
 class Profile extends Controller
 {
@@ -52,7 +57,21 @@ class Profile extends Controller
             }
         }
     }
+    public function delete()
+    {
+        if (isset($_POST['delete-submit']))
+        {
+            $images = Gallery::getImageNames();
+            foreach ($images as $key => $value)
+            {
+                unlink( BP . '/public/img/'. $value->imgFullNameGallery);
+            }
+            User::deleteAccount();
+            $this->view('Login' . DIRECTORY_SEPARATOR . 'index');
+            echo $this->view->render('Login/index.phtml');
 
+        }
+    }
     public function upload()
     {
         if (isset($_POST['upload-submit'])) {

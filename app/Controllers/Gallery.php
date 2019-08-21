@@ -35,4 +35,5 @@ class Gallery extends Controller
         $this->index();
     }
 
+
 }

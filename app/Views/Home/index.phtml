@@ -1,4 +1,6 @@
 <?php require '../app/Views/header.phtml' ?>
 <h1>Home Page</h1>
 
+<?php if(isset($success)) echo '<div class="alert alert-primary" role="alert">' . $success . '</div>'; ?>
+
 <?php require '../app/Views/footer.phtml' ?>
