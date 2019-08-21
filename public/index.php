@@ -1,6 +1,9 @@
 <?php
+
+
 define('BP', dirname(__DIR__));
 use Models\Config;
+use Models\Session;
 
 spl_autoload_register(function($class) {
     $file = str_replace('\\', '/', $class);
@@ -11,10 +14,14 @@ spl_autoload_register(function($class) {
 
 new \Core\Router();
 
-$a = Models\Database::getInstance()->query('SELECT * FROM users WHERE id = ?', array('2'));
-//var_dump($a);
+if (\Models\Cookie::exists(Config::getInstance()->getConfig("remember/cookie_name")) && !$_SESSION)
+{
+    $hash = \Models\Cookie::get(Config::getInstance()->getConfig("remember/cookie_name"));
+    $hashCheck = \Models\User::CheckHashRememberme($hash);
 
-//foreach ($a->result() as $user)
-//{
-//    echo $user->name;
-//}
+    if (!empty($hashCheck))
+    {
+        Session::start();
+        Session::set('id', $hashCheck->user_id );
+    }
+}

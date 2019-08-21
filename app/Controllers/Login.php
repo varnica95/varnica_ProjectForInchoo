@@ -22,9 +22,12 @@ class Login extends Controller
         if (isset($_POST['login-submit']))
         {
             $user = new User($_POST);
-            if(!$user->userLogin())
-            {
 
+            if(isset($_POST['remember']))
+            $remember = ($_POST['remember'] === 'on') ? true : false;
+
+            if(!$user->userLogin($remember))
+            {
                 $this->view('Login' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Login/index.phtml', [
                    'errors' => $user->getErrors(),

@@ -1,6 +1,7 @@
 <?php
 
 namespace Models;
+use Includes\Hash;
 use Includes\tErrorHandler;
 use PDO;
 
@@ -11,7 +12,8 @@ class User extends Database
 {
     use tErrorHandler;
     private $_passed = false,
-            $_errors = array();
+            $_errors = array(),
+            $_cookieName;
 
     public $_userRow, $_curPassword;
 
@@ -21,7 +23,7 @@ class User extends Database
         {
             $this->$key = $value;
         }
-
+        $this->_cookieName = Config::getInstance()->getConfig('remember/cookie_name');
     }
 
     public function newUser()
@@ -56,7 +58,7 @@ class User extends Database
         }
     }
 
-    public function userLogin()
+    public function userLogin($remember = false)
     {
         try{
             $conn = Database::getInstance()->getPDO();
@@ -81,6 +83,22 @@ class User extends Database
                 {
                     Session::start();
                     Session::set('id', $row->id);
+
+                    if($remember)
+                    {
+                        $hash = Hash::unique();
+                        $hashCheck = $this->CheckRememberme();
+
+                        if(empty($hashCheck)) {
+                            $this->rememberMe($hash);
+                        }else{
+                            $hash = $hashCheck->hash;
+                            var_dump($hash);
+                        }
+
+                    Cookie::put($this->_cookieName, $hash, Config::getInstance()->getConfig("remember/cookie_expiry"));
+
+                    }
                     return true;
                 }
             }
@@ -221,4 +239,60 @@ class User extends Database
             $e->getMessage();
         }
     }
+
+    public function rememberMe($hash)
+    {
+        $conn = Database::getInstance()->getPDO();
+
+        $sql = 'INSERT INTO remember(user_id, hash) VALUES (:id, :hash)';
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(":id", Session::get('id'));
+        $stmt->bindValue(":hash", $hash);
+
+        $stmt->execute();
+    }
+
+    private function CheckRememberme()
+    {
+        $conn = Database::getInstance()->getPDO();
+
+        $sql = 'SELECT * FROM remember WHERE user_id = :id';
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(":id", Session::get('id'));
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public static function CheckHashRememberme($hash)
+    {
+        $conn = Database::getInstance()->getPDO();
+
+        $sql = 'SELECT * FROM remember WHERE hash = :hash';
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(":hash", $hash);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public static function DeleteCookie($id)
+    {
+        $conn = Database::getInstance()->getPDO();
+
+        $sql = 'DELETE FROM remember WHERE user_id = :id';
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(":id", $id);
+
+        $stmt->execute();
+
+    }
+
+
 }
