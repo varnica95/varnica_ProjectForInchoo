@@ -58,4 +58,38 @@ class Gallery extends Database
         }
     }
 
+    public static function getUserGallery($uploader)
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT * FROM gallery WHERE uploader = :uploader ORDER BY id DESC';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindValue(':uploader', $uploader);
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
+
+    public static function deleteImage($uploaderid)
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'DELETE FROM gallery WHERE uploaderid = :uploaderid';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindValue(':uploaderid', $uploaderid);
+            $stmt->execute();
+
+        }catch (\PDOException $e){
+            $e->getMessage();
+        }
+    }
 }

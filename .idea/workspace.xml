@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da4c3722-9418-4339-b782-25cc25e38f0b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Controllers/Gallery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Gallery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Gallery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/header.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,7 +78,8 @@
       <workItem from="1565872997636" duration="3688000" />
       <workItem from="1565934551027" duration="16398000" />
       <workItem from="1566190942538" duration="25915000" />
-      <workItem from="1566277132688" duration="20759000" />
+      <workItem from="1566277132688" duration="23621000" />
+      <workItem from="1566363709624" duration="3461000" />
     </task>
     <servers />
   </component>

@@ -25,8 +25,14 @@
                         </td>
                         <td><?php echo $value->descGallery; ?></td>
                         <td><?php echo $value->titleGallery; ?></td>
-                        <td><?php echo $value->uploader ?></td>
-                        <td>Action</td>
+                        <td><?php echo '<a href="/Gallery/user/'. $value->uploader .'">'. $value->uploader . '</a>'; ?></td>
+                        <td><?php
+                            if($value->uploaderid == \Models\Session::get('id')) {
+                                echo '<a href="/Gallery/delete/' . $value->uploaderid . '/'. $value->imgFullNameGallery .'">' . 'Delete' . '</a>';
+                            }
+                            ?>
+
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                     </tbody>
