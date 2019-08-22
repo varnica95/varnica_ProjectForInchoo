@@ -28,9 +28,18 @@ class ImageValidation
         }
     }
 
+    public function tooLong()
+    {
+        if(strlen($this->filename) >= 25 || strlen($this->filetitle) >= 25)
+        {
+            $this->addError('tooLong', 'Fields are too long. Maximum 25 characters.');
+        }
+    }
+
     public function checkValidation()
     {
         $this->emptyFields();
+        $this->tooLong();
         $this->isPassed();
     }
 }

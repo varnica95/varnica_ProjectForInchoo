@@ -128,4 +128,24 @@ class Gallery extends Database
             $e->getMessage();
         }
     }
+
+    public static function updateRow($title, $desc, $id)
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'UPDATE gallery SET titleGallery = :titleGallery AND descGallery = :descGallery WHERE id = :id';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindValue(':titleGallery', $title);
+            $stmt->bindValue(':descGallery', $desc);
+            $stmt->bindValue(':id', $id);
+
+            $stmt->execute();
+
+        }catch(\PDOException $e){
+            $e->getMessage();
+        }
+    }
 }

@@ -32,8 +32,17 @@ class Gallery extends Controller
     {
         $gallery = \Models\Gallery::deleteImage($id);
         unlink( BP . '/public/img/'. $imgname);
-        $this->index();
+        $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
+        echo $this->view->render('Gallery/index.phtml', [
+            'success' => 'Image deleted successfully.'
+        ]);
     }
 
+    public function update($title, $desc, $id)
+    {
+        $update = \Models\Gallery::updateRow($title, $desc, $id);
+
+        echo $title;
+    }
 
 }

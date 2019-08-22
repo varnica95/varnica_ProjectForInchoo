@@ -20,6 +20,9 @@
                     <tbody>
                     <tr>
                         <?php
+                        if (isset($success))
+                            echo '<div class="alert alert-success" role="alert">'. $success .'</div>';
+
                         if(empty($gallery))
                             echo '<div class="alert alert-dark" role="alert">There are no images yet. Please go to the profile page and upload an image.</div>';
 

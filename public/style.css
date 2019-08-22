@@ -3,6 +3,7 @@
 }
 /* NAVIGATION */
 nav{
+    width: 100%;
     background-color: #262626;
 }
 
@@ -87,4 +88,12 @@ img:hover {
     font-size: 16px;
     color: white;
     cursor: pointer;
+}
+
+/*Gallery */
+
+#tabletext{
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
 }
