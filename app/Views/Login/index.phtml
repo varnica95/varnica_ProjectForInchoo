@@ -10,7 +10,7 @@ if (!isset($_SESSION))
      <?php if(isset($errors['wrongusername'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongusername'] . '</div>'; ?>
     <input type="password" name="pwd" placeholder="Password">
     <?php if(isset($errors['wrongpassword'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongpassword'] . '</div>'; ?>
-    <input type="checkbox" name="remember"> <a>Remember me</a>
+    <input id="remember" type="checkbox" name="remember"> <a>Remember me</a>
     <button type="submit" name="login-submit">Login</button>
 </form>
 

@@ -3,8 +3,7 @@
 }
 /* NAVIGATION */
 nav{
-    background-color: black;
-    color: red;
+    background-color: #262626;
 }
 
 nav ul{
@@ -20,8 +19,15 @@ nav ul li{
 nav ul li a{
     display: block;
     padding: 10px 14px;
-    text-decoration: none;
-    color: bisque;
+    text-decoration: none !important;
+    color: aliceblue;
+}
+
+/* TITLE*/
+
+h1{
+    color: #262626;
+    text-align: center;
 }
 
 /* REGISTRATION */
@@ -40,6 +46,11 @@ nav ul li a{
     border: 1px solid #ccc;
     font-size: 16px;
     line-height: 40px;
+}
+
+#remember{
+    width: 10%;
+    height: 20px;
 }
 
 .signup-form button {
@@ -61,4 +72,19 @@ img:hover {
     -ms-transform: scale(2);
     -webkit-transform: scale(2);
     transform: scale(2);
+}
+
+/*HOME*/
+.number {
+    text-align: center;
+}
+.number input{
+    display: block;
+    margin: 0 auto;
+    width: 12%;
+    height: 40px;
+    background-color: black;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
 }

@@ -76,16 +76,16 @@ class Gallery extends Database
         }
     }
 
-    public static function deleteImage($uploaderid)
+    public static function deleteImage($id)
     {
         try{
             $conn = Database::getInstance()->getPDO();
 
-            $sql = 'DELETE FROM gallery WHERE uploaderid = :uploaderid';
+            $sql = 'DELETE FROM gallery WHERE id = :id';
 
             $stmt = $conn->prepare($sql);
 
-            $stmt->bindValue(':uploaderid', $uploaderid);
+            $stmt->bindValue(':id', $id);
             $stmt->execute();
 
         }catch (\PDOException $e){

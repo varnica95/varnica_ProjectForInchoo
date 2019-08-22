@@ -24,7 +24,9 @@ class Login extends Controller
             $user = new User($_POST);
 
             if(isset($_POST['remember']))
-            $remember = ($_POST['remember'] === 'on') ? true : false;
+                $remember = ($_POST['remember'] === 'on') ? true : false;
+            else
+                $remember = false;
 
             if(!$user->userLogin($remember))
             {

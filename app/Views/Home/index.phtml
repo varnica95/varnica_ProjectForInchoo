@@ -3,7 +3,9 @@
 
 <?php if(isset($success)) echo '<div class="alert alert-primary" role="alert">' . $success . '</div>'; ?>
 
-Number: <div id="data"></div>
-<input type="submit" id="get-num-submit">
 
+<div class="number">
+    <div id="data"></div>
+<input type="submit" id="get-num-submit" value="Get the number" title="Show the number of images">
+</div>
 <?php require '../app/Views/footer.phtml' ?>

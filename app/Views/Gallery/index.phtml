@@ -34,7 +34,7 @@
                         <td><?php echo '<a href="/Gallery/user/'. $value->uploader .'">'. $value->uploader . '</a>'; ?></td>
                         <td><?php
                             if($value->uploaderid == \Models\Session::get('id')) {
-                                echo '<a href="/Gallery/delete/' . $value->uploaderid . '/'. $value->imgFullNameGallery .'">' . 'Delete' . '</a>';
+                                echo '<a href="/Gallery/delete/' . $value->id . '/'. $value->imgFullNameGallery .'">' . 'Delete' . '</a>';
                             }
                             ?>
 

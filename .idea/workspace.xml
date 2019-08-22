@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="da4c3722-9418-4339-b782-25cc25e38f0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Gallery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Gallery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/Home/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Home/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/footer.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/footer.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/Login/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Login/index.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/header.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/Alolool.5d5d08b7563887.77842019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/fwvas.5d5e31134a32b8.77368210.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/noreload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/noreload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,7 +95,7 @@
       <workItem from="1566190942538" duration="25915000" />
       <workItem from="1566277132688" duration="23621000" />
       <workItem from="1566363709624" duration="23851000" />
-      <workItem from="1566450472514" duration="4461000" />
+      <workItem from="1566450472514" duration="6937000" />
     </task>
     <servers />
   </component>

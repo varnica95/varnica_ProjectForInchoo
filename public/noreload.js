@@ -1,5 +1,5 @@
 $('#get-num-submit').on('click', function () {
-   $('div#data').load('number', {
+   $('div#data').load('/Home/number', {
 
-   }).text('ahh');
+   })
 });

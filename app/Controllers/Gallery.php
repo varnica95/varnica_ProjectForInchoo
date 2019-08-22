@@ -28,9 +28,9 @@ class Gallery extends Controller
         ]);
     }
 
-    public function delete($uploaderid, $imgname)
+    public function delete($id, $imgname)
     {
-        $gallery = \Models\Gallery::deleteImage($uploaderid);
+        $gallery = \Models\Gallery::deleteImage($id);
         unlink( BP . '/public/img/'. $imgname);
         $this->index();
     }
