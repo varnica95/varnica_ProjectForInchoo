@@ -1,6 +1,6 @@
 <?php require '../app/Views/header.phtml' ?>
 
-<h1>Gallery Page</h1>
+    <h1>Gallery Page</h1>
 
 
     <div class="container">
@@ -21,23 +21,37 @@
                     <tr>
                         <?php
                         if (isset($success))
-                            echo '<div class="alert alert-success" role="alert">'. $success .'</div>';
+                            echo '<div class="alert alert-success" role="alert">' . $success . '</div>';
 
-                        if(empty($gallery))
+                        if (empty($gallery))
                             echo '<div class="alert alert-dark" role="alert">There are no images yet. Please go to the profile page and upload an image.</div>';
 
-                        if(isset($gallery))
-                        foreach ($gallery as $key => $value):?>
+                        if (isset($gallery))
+                        foreach ($gallery
+
+                        as $key => $value): ?>
                         <th scope="row"><?php echo $key; ?></th>
                         <td class="w-25">
-                            <img src="<?php echo '/img/' . $value->imgFullNameGallery ?>" class="img-fluid img-thumbnail" alt="Image">
+                            <img src="<?php echo '/img/' . $value->imgFullNameGallery ?>"
+                                 class="img-fluid img-thumbnail" alt="Image">
                         </td>
-                        <td><?php echo $value->descGallery; ?></td>
-                        <td><?php echo $value->titleGallery; ?></td>
-                        <td><?php echo '<a href="/Gallery/user/'. $value->uploader .'">'. $value->uploader . '</a>'; ?></td>
+                        <?php if ($value->uploaderid == \Models\Session::get('id')): ?>
+                            <td><?php echo '<textarea cols="30" rows="5" id="tabletext" type="textarea"">' . $value->descGallery . '</textarea>'; ?></td>
+                            <td><?php echo '<input id="tabletext" value="' . $value->titleGallery . '">'; ?></td>
+                            <p id="id" hidden><?php echo $value->id ?></p>
+                        <?php endif; ?>
+
+                        <?php if ($value->uploaderid !== \Models\Session::get('id')): ?>
+                            <td><?php echo $value->descGallery?></td>
+                            <td><?php echo $value->titleGallery?></td>
+                        <?php endif; ?>
+
+                        <td><?php echo '<a href="/Gallery/user/' . $value->uploader . '">' . $value->uploader . '</a>'; ?></td>
                         <td><?php
-                            if($value->uploaderid == \Models\Session::get('id')) {
-                                echo '<a href="/Gallery/delete/' . $value->id . '/'. $value->imgFullNameGallery .'">' . 'Delete' . '</a>';
+                            if ($value->uploaderid == \Models\Session::get('id')) {
+                                echo '<input type="submit" id="update-row-submit" value="Update" title="Show the number of images">';
+                                echo '<div id="upd" hidden></div>';
+                                echo '<a href="/Gallery/delete/' . $value->id . '/' . $value->imgFullNameGallery . '">' . 'Delete' . '</a>';
                             }
                             ?>
 

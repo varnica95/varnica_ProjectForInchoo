@@ -38,11 +38,17 @@ class Gallery extends Controller
         ]);
     }
 
-    public function update($title, $desc, $id)
+    public function update($title = [], $desc = [], $id)
     {
-        $update = \Models\Gallery::updateRow($title, $desc, $id);
+        $t =str_replace(".!."," ",$title);
+        $d = str_replace(".!."," ",$desc);
 
-        echo $title;
+        $update = \Models\Gallery::updateRow($t, $d, $id);
+
+        $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
+        echo $this->view->render('Gallery/index.phtml', [
+            'success' => 'Row successfully updated.'
+        ]);
     }
 
 }

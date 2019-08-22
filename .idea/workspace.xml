@@ -4,13 +4,10 @@
     <list default="true" id="da4c3722-9418-4339-b782-25cc25e38f0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Includes/ImageValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/ImageValidation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Gallery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Logout/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Logout/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Profile/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Profile/index.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/AAA.5d5e70b29902a8.44390155.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/noreload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/noreload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +88,7 @@
       <workItem from="1566190942538" duration="25915000" />
       <workItem from="1566277132688" duration="23621000" />
       <workItem from="1566363709624" duration="23851000" />
-      <workItem from="1566450472514" duration="20295000" />
+      <workItem from="1566450472514" duration="24291000" />
     </task>
     <servers />
   </component>
