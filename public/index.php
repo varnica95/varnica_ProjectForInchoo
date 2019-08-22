@@ -1,5 +1,7 @@
 <?php
 
+if(!isset($_SESSION))
+    session_start();
 
 define('BP', dirname(__DIR__));
 use Models\Config;

@@ -111,4 +111,21 @@ class Gallery extends Database
             $e->getMessage();
         }
     }
+
+    public static function getNumberOfImages()
+    {
+        try{
+            $conn = Database::getInstance()->getPDO();
+
+            $sql = 'SELECT * FROM gallery';
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        }catch(\PDOException $e){
+            $e->getMessage();
+        }
+    }
 }

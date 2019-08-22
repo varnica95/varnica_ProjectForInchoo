@@ -1,4 +1,6 @@
-
+*{
+    font-family: 'Anton', sans-serif !important;
+}
 /* NAVIGATION */
 nav{
     background-color: black;
@@ -36,7 +38,6 @@ nav ul li a{
     padding: 0px 5%;
     margin-bottom: 4px;
     border: 1px solid #ccc;
-    font-family: arial;
     font-size: 16px;
     line-height: 40px;
 }
@@ -47,7 +48,6 @@ nav ul li a{
     width: 30%;
     height: 40px;
     background-color: black;
-    font-family: arial;
     font-size: 16px;
     color: white;
     cursor: pointer;

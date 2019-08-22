@@ -8,7 +8,15 @@ class Home extends Controller
 {
     public function index()
     {
+        $numberOfImages = \Models\Gallery::getNumberOfImages();
+
         $this->view('Home' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Home/index.phtml');
+    }
+
+    public function number()
+    {
+        $numberOfImages = \Models\Gallery::getNumberOfImages();
+        echo count($numberOfImages);
     }
 }
