@@ -6,13 +6,13 @@ namespace Core;
 
 class Router
 {
-    protected $controller = '',
-        $action,
-        $prams;
+    protected $controller = '';
+    protected $action;
+    protected $params;
 
     public function __construct()
     {
-        $this->run();
+
     }
 
     protected function prepareURL()
@@ -27,7 +27,7 @@ class Router
         $this->action = isset($url[1]) ? $url[1] : 'index';
         unset($url[0], $url[1]);
 
-        $this->prams = !empty($url) ? array_values($url) : array();
+        $this->params = !empty($url) ? array_values($url) : array();
 
     }
 
@@ -36,6 +36,6 @@ class Router
         $this->prepareURL();
         $this->controller = new $this->controller();
 
-        call_user_func_array([$this->controller, $this->action], $this->prams);
+        call_user_func_array([$this->controller, $this->action], $this->params);
     }
 }

@@ -4,8 +4,8 @@ namespace Core;
 
 class View
 {
-    protected $view_file,
-        $view_data;
+    protected $view_file;
+    protected $view_data;
 
     public function __construct($view_file, $view_data)
     {

@@ -14,7 +14,8 @@ spl_autoload_register(function ($class) {
 });
 
 
-new \Core\Router();
+$router = new \Core\Router();
+$router->run();
 
 if (\Models\Cookie::exists(Config::getInstance()->getConfig("remember/cookie_name")) && !$_SESSION) {
     $hash = \Models\Cookie::get(Config::getInstance()->getConfig("remember/cookie_name"));

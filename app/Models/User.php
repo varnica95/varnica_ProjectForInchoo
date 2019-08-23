@@ -11,11 +11,12 @@ session_start();
 class User extends Database
 {
     use tErrorHandler;
-    private $_passed = false,
-            $_errors = array(),
-            $_cookieName;
 
-    public $_userRow, $_curPassword;
+    private $_passed = false;
+    private $_errors = array();
+    private $_cookieName;
+
+    public $_userRow;
 
     public function __construct($params = [])
     {

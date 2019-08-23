@@ -5,8 +5,9 @@ namespace Includes;
 class Validation implements iValidation
 {
     use terrorhandler;
-    private $_passed = false,
-            $_errors = array();
+
+    private $_passed = false;
+    private $_errors = array();
 
     public function __construct($params = [])
     {

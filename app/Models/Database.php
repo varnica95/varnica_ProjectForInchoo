@@ -6,10 +6,11 @@ use PDO;
 class Database
 {
     private static $_instance = NULL;
-    private $_pdo,
-        $_error = false,
-        $_query,
-        $_results;
+
+    private $_pdo;
+    private $_error = false;
+    private $_query;
+    private $_results;
 
     private function __construct()
     {
