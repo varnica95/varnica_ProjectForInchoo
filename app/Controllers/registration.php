@@ -3,14 +3,14 @@
 namespace Controllers;
 
 use Core\Controller;
-use Includes\Validation;
+use Includes\validation;
 use Models\User;
 
 class Registration extends Controller
 {
     public function index()
     {
-        $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
+        $this->view('registration' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Registration/index.phtml');
     }
 
@@ -22,12 +22,12 @@ class Registration extends Controller
                 $newUser = new User($_POST);
                 $newUser->newUser();
 
-                $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
+                $this->view('registration' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Registration/index.phtml', [
                     'success' => 'Registration successfully completed.'
                 ]);
             } else {
-                $this->view('Registration' . DIRECTORY_SEPARATOR . 'index');
+                $this->view('registration' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Registration/index.phtml', [
                     'errors' => $validation->getErrors()
                 ]);

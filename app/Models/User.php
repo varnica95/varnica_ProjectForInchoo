@@ -1,8 +1,8 @@
 <?php
 
 namespace Models;
-use Includes\Hash;
-use Includes\tErrorHandler;
+use Includes\hash;
+use Includes\terrorhandler;
 use PDO;
 
 if (!isset($_SESSION))

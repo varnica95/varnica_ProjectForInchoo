@@ -5,7 +5,8 @@ if (!isset($_SESSION))
 ?>
 <h1>Login Page</h1>
 
-<form class="signup-form" action="/Login/userLogin" method="POST">
+<?php if(isset($success)) echo '<div class="alert alert-success" role="alert">' . $success . '</div>'; ?>
+<form class="signup-form" action="/login/userLogin" method="POST">
     <input type="text" name="userOrEmail" placeholder="Username or email">
      <?php if(isset($errors['wrongusername'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongusername'] . '</div>'; ?>
     <input type="password" name="pwd" placeholder="Password">

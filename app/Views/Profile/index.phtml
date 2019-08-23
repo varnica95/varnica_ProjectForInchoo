@@ -9,12 +9,13 @@ $info->showProfile();
 ?>
     <h1>Profile Page</h1>
 
-    <form style="float:left;margin-left:50px;" class="signup-form" action="/Profile/update" method="POST">
+    <form class="signup-form" action="/profile/update" method="POST">
+        <h3>Account information</h3>
         <input type="text" name="firstname" value="<?php echo $info->_userRow->fname ?>" readonly>
         <input type="text" name="lastname"    value="<?php echo $info->_userRow->lname  ?>" readonly>
         <input type="text" name="email"        value="<?php echo $info->_userRow->email  ?>" readonly>
         <input type="text" name="username"   value="<?php echo $info->_userRow->username  ?>" readonly> <br>
-        <br><a>Change your password:</a>
+        <br><h3>Change your password</h3>
         <?php if(isset($pwsuccess)) echo '<div class="alert alert-success" role="alert">' . $pwsuccess . '</div>'; ?>
         <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
         <?php if(isset($curPwError['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $curPwError['pwd'] . '</div>'; ?>
@@ -25,10 +26,12 @@ $info->showProfile();
         <button type="submit" name="update-submit">Update</button>
     </form>
 
-    <form style="float:right;margin-right:50px;" class="signup-form" action="/Profile/upload" method="post" enctype="multipart/form-data">
+    <form class="signup-form" action="/profile/upload" method="post" enctype="multipart/form-data">
+        <h3>Upload an image</h3>
         <?php if(isset($imgsuccess)) echo '<div class="alert alert-success" role="alert">' . $imgsuccess . '</div>'; ?>
         <?php if(isset($fileerrors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['emptyFields'] . '</div>'; ?>
         <?php if(isset($fileerrors['tooLong'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['tooLong'] . '</div>'; ?>
+        <?php if(isset($fileerror)) echo '<div class="alert alert-danger" role="alert">' . $fileerror . '</div>'; ?>
         <input type="text" name="filename" placeholder="Filename">
         <input type="text" name="filetitle" placeholder="Image title">
         <input type="text" name="filedesc" placeholder="Image description">
@@ -36,9 +39,10 @@ $info->showProfile();
         <button type="submit" name="upload-submit">Upload</button>
     </form>
 
-    <form style="float:right;margin:0;" class="signup-form" action="/Profile/delete" method="POST">
-        <br><a>Delete your account:</a>
-        <button type="submit" name="delete-submit">Delete</button>
+    <form class="signup-form" action="/profile/delete" method="POST">
+        <br><h3>Delete your account</h3>
+        <p>*This will delete your account and all uploaded images. </p>
+        <button onclick="return confirm('Are you sure you want to delete your account?')" type="submit" name="delete-submit">Delete</button>
     </form>
 
 

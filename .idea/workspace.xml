@@ -3,13 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="da4c3722-9418-4339-b782-25cc25e38f0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Gallery/index.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/gallery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Core/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/DeleteValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/deletevalidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/Hash.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/hash.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/ImageValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/imagevalidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/ProfileValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/profilevalidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/iValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/ivalidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Includes/tErrorHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Includes/terrorhandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/Login/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Login/index.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/Profile/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Profile/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/Index.5d5e8a870e49e1.06434958.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/Index.5d5e8c6982eae6.41088261.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/noreload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/noreload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/Registration/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/Registration/index.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/header.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="varnica.test" id="93a7a407-803b-475c-a746-c605ee99a9f7" name="varnica.test" />
@@ -91,7 +104,7 @@
       <workItem from="1566277132688" duration="23621000" />
       <workItem from="1566363709624" duration="23851000" />
       <workItem from="1566450472514" duration="24398000" />
-      <workItem from="1566536976703" duration="3081000" />
+      <workItem from="1566536976703" duration="9143000" />
     </task>
     <servers />
   </component>

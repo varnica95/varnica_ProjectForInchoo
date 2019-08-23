@@ -16,15 +16,15 @@ if(!isset($_SESSION))
 <body>
 <nav>
     <ul>
-        <li> <a href = "/Home/">Home</a> </li>
+        <li> <a href = "/home/">Home</a> </li>
         <?php if(!isset($_SESSION['id'])): ?>
-        <li> <a href = "/Login/">Login</a> </li>
-        <li> <a href = "/Registration/">Registration</a> </li>
+        <li> <a href = "/login/">Login</a> </li>
+        <li> <a href = "/registration/">Registration</a> </li>
         <?php endif; ?>
         <?php if(isset($_SESSION['id'])): ?>
-        <li> <a href = "/Gallery/index">Gallery</a> </li>
-        <li> <a href = "/Profile/index">Profile</a> </li>
-        <li> <a href = "/Logout/logout">Logout</a> </li>
+        <li> <a href = "/gallery/index">Gallery</a> </li>
+        <li> <a href = "/profile/index">Profile</a> </li>
+        <li> <a href = "/logout/logout">Logout</a> </li>
         <?php endif; ?>
     </ul>
 </nav>

@@ -12,7 +12,7 @@ class Gallery extends Controller
     public function index()
     {
         $this->_gallery = \Models\Gallery::getGallery();
-        $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
+        $this->view('gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
             'gallery' => $this->_gallery
         ]);
@@ -23,7 +23,7 @@ class Gallery extends Controller
     {
         $gallery = \Models\Gallery::getUserGallery($uploader);
 
-        $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
+        $this->view('gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
            'gallery' => $gallery
         ]);
@@ -34,7 +34,7 @@ class Gallery extends Controller
         $gallery = \Models\Gallery::deleteImage($id);
         $this->_gallery = \Models\Gallery::getGallery();
         unlink( BP . '/public/img/'. $imgname);
-        $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
+        $this->view('gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
             'success' => 'Image deleted successfully.',
             'gallery' => $this->_gallery

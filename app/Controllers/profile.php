@@ -3,9 +3,9 @@
 namespace Controllers;
 
 use Core\Controller;
-use Includes\ImageValidation;
-use Includes\ProfileValidation;
-use Includes\DeleteValidation;
+use Includes\imagevalidation;
+use Includes\profilevalidation;
+use Includes\deletevalidation;
 use Models\Gallery;
 use Models\Session;
 use Models\User;
@@ -20,7 +20,7 @@ class Profile extends Controller
 
     public function index()
     {
-        $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+        $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Profile/index.phtml');
     }
 
@@ -36,19 +36,19 @@ class Profile extends Controller
                 if(!empty($profile->getErrors()))
                 {
                     $this->_error = $profile->getErrors();
-                    $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                    $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'curPwError' => $this->_error
                     ]);
                 }else {
-                    $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                    $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'pwsuccess' => 'Password updated successfully.'
                     ]);
                 }
 
             } else {
-                $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Profile/index.phtml', [
                     'errors' => $validation->getErrors(),
                     'pwerror' => $this->_error
@@ -67,8 +67,10 @@ class Profile extends Controller
                 unlink( BP . '/public/img/'. $value->imgFullNameGallery);
             }
             User::deleteAccount();
-            $this->view('Login' . DIRECTORY_SEPARATOR . 'index');
-            echo $this->view->render('Login/index.phtml');
+            $this->view('login' . DIRECTORY_SEPARATOR . 'index');
+            echo $this->view->render('Login/index.phtml', [
+                'success' => 'Account sucessfully deleted.'
+            ]);
 
         }
     }
@@ -103,15 +105,20 @@ class Profile extends Controller
                         $image = new Gallery(Session::get('id'), $uploader->username, $imageTitle, $imageDesc, $imageFullName);
                         $image->uploadImage();
                         move_uploaded_file($fileTempName, $fileDestination);
-                        $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                        $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                         echo $this->view->render('Profile/index.phtml', [
                             'imgsuccess' => 'Image uploaded successfully.'
                             ]);
                     }
+                }else{
+                    $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
+                    echo $this->view->render('Profile/index.phtml', [
+                        'fileerror' => 'The file does not exist or the extension is not allowed. Please try again.'
+                    ]);
                 }
 
             }else{
-                $this->view('Profile' . DIRECTORY_SEPARATOR . 'index');
+                $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Profile/index.phtml',[
                     'fileerrors' => $validation->getErrors()
                 ]);

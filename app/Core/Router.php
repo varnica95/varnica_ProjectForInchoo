@@ -22,10 +22,10 @@ class Router
 
         if (empty($url[0]))
         {
-            $url[0] = 'Home';
+            $url[0] = 'home';
         }
-        $this->controller = isset($url[0]) ?  'Controllers\\' . ucfirst($url[0])  : 'Home';
-        $this->action = isset($url[1]) ? ucfirst($url[1]) : 'index';
+        $this->controller = isset($url[0]) ?  'Controllers\\' . $url[0]  : 'home';
+        $this->action = isset($url[1]) ? $url[1] : 'index';
         unset($url[0], $url[1]);
 
         $this->prams = !empty($url) ? array_values($url) : array();
