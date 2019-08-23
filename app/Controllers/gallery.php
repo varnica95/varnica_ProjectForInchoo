@@ -37,7 +37,7 @@ class Gallery extends Controller
         unlink(BP . '/public/img/' . $imgname);
         $this->view('gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
-            'success' => 'Image deleted successfully.',
+            'success' => 'The image deleted successfully.',
             'gallery' => $this->_gallery
         ]);
     }

@@ -41,7 +41,7 @@ class Profile extends Controller
                 } else {
                     $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
-                        'pwsuccess' => 'Password updated successfully.'
+                        'pwsuccess' => 'The password updated successfully.'
                     ]);
                 }
 
@@ -66,7 +66,7 @@ class Profile extends Controller
             User::deleteAccount();
             $this->view('login' . DIRECTORY_SEPARATOR . 'index');
             echo $this->view->render('Login/index.phtml', [
-                'success' => 'Account sucessfully deleted.'
+                'success' => 'The account sucessfully deleted.'
             ]);
 
         }
