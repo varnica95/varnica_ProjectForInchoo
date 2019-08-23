@@ -8,12 +8,13 @@ use Core\Controller;
 
 class Gallery extends Controller
 {
+    private $_gallery;
     public function index()
     {
-        $gallery = \Models\Gallery::getGallery();
+        $this->_gallery = \Models\Gallery::getGallery();
         $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
-            'gallery' => $gallery
+            'gallery' => $this->_gallery
         ]);
 
     }
@@ -31,10 +32,12 @@ class Gallery extends Controller
     public function delete($id, $imgname)
     {
         $gallery = \Models\Gallery::deleteImage($id);
+        $this->_gallery = \Models\Gallery::getGallery();
         unlink( BP . '/public/img/'. $imgname);
         $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
-            'success' => 'Image deleted successfully.'
+            'success' => 'Image deleted successfully.',
+            'gallery' => $this->_gallery
         ]);
     }
 
@@ -45,10 +48,6 @@ class Gallery extends Controller
 
         $update = \Models\Gallery::updateRow($t, $d, $id);
 
-        $this->view('Gallery' . DIRECTORY_SEPARATOR . 'index');
-        echo $this->view->render('Gallery/index.phtml', [
-            'success' => 'Row successfully updated.'
-        ]);
     }
 
 }

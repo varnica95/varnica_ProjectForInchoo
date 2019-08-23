@@ -50,7 +50,7 @@
                         <td><?php
                             if ($value->uploaderid == \Models\Session::get('id')) {
                                 echo '<input type="submit" id="update-row-submit" value="Update" title="Show the number of images">';
-                                echo '<div id="upd" hidden></div>';
+                                echo '<div id="upd"></div>';
                                 echo '<a href="/Gallery/delete/' . $value->id . '/' . $value->imgFullNameGallery . '">' . 'Delete' . '</a>';
                             }
                             ?>

@@ -86,10 +86,8 @@ class Profile extends Controller
                 $file = $_FILES['file'];
 
                 $fileName = $file["name"];
-                $fileType = $file["type"];
                 $fileTempName = $file["tmp_name"];
                 $fileError = $file["error"];
-                $fileSize = $file["size"];
 
                 $fileExt = explode(".", $fileName);
                 $fileActualExt = strtolower(end($fileExt));

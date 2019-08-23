@@ -10,7 +10,6 @@ $('#get-num-submit').on('click', function () {
       var title = $('input#tabletext').val().replace(/ /g, '.!.');
       var id = $('p#id').text();
 
-      $('#upd').load('/Gallery/update/' + title +'/' + desc + '/' + id + '', {
+      $('#upd').load('/Gallery/update/' + title +'/' + desc + '/' + id + '', alert('Updated'))
 
-      })
    });
