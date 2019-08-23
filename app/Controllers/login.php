@@ -3,7 +3,7 @@
 namespace Controllers;
 
 if (!isset($_SESSION))
-session_start();
+    session_start();
 
 use Core\Controller;
 use Models\Session;
@@ -19,26 +19,24 @@ class Login extends Controller
 
     public function userLogin()
     {
-        if (isset($_POST['login-submit']))
-        {
+        if (isset($_POST['login-submit'])) {
             $user = new User($_POST);
 
-            if(isset($_POST['remember']))
+            if (isset($_POST['remember']))
                 $remember = ($_POST['remember'] === 'on') ? true : false;
             else
                 $remember = false;
 
-            if(!$user->userLogin($remember))
-            {
+            if (!$user->userLogin($remember)) {
                 $this->view('login' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Login/index.phtml', [
-                   'errors' => $user->getErrors(),
+                    'errors' => $user->getErrors(),
                 ]);
-            }else {
+            } else {
                 $this->view('home' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Home/index.phtml', [
                     'success' => 'Welcome. You are now logged in.'
-                    ]);
+                ]);
             }
         }
     }

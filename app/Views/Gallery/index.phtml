@@ -42,16 +42,16 @@
                         <?php endif; ?>
 
                         <?php if ($value->uploaderid !== \Models\Session::get('id')): ?>
-                            <td><?php echo $value->descGallery?></td>
-                            <td><?php echo $value->titleGallery?></td>
+                            <td><?php echo $value->descGallery ?></td>
+                            <td><?php echo $value->titleGallery ?></td>
                         <?php endif; ?>
 
-                        <td><?php echo '<a href="/Gallery/user/' . $value->uploader . '">' . $value->uploader . '</a>'; ?></td>
+                        <td><?php echo '<a href="/gallery/user/' . $value->uploader . '">' . $value->uploader . '</a>'; ?></td>
                         <td><?php
                             if ($value->uploaderid == \Models\Session::get('id')) {
                                 echo '<input type="submit" id="update-row-submit" value="Update" title="Show the number of images">';
                                 echo '<div id="upd"></div>';
-                                echo '<a href="/Gallery/delete/' . $value->id . '/' . $value->imgFullNameGallery . '">' . 'Delete' . '</a>';
+                                echo '<a href="/gallery/delete/' . $value->id . '/' . $value->imgFullNameGallery . '">' . 'Delete' . '</a>';
                             }
                             ?>
 

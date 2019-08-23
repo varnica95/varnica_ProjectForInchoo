@@ -1,6 +1,5 @@
 <?php
-if(!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
     session_start();
 }
 ?>
@@ -9,22 +8,23 @@ if(!isset($_SESSION))
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="/style.css" rel = "stylesheet" media = "all">
+    <link href="/style.css" rel="stylesheet" media="all">
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <nav>
     <ul>
-        <li> <a href = "/home/">Home</a> </li>
-        <?php if(!isset($_SESSION['id'])): ?>
-        <li> <a href = "/login/">Login</a> </li>
-        <li> <a href = "/registration/">Registration</a> </li>
+        <li><a href="/home/">Home</a></li>
+        <?php if (!isset($_SESSION['id'])): ?>
+            <li><a href="/login/">Login</a></li>
+            <li><a href="/registration/">Registration</a></li>
         <?php endif; ?>
-        <?php if(isset($_SESSION['id'])): ?>
-        <li> <a href = "/gallery/index">Gallery</a> </li>
-        <li> <a href = "/profile/index">Profile</a> </li>
-        <li> <a href = "/logout/logout">Logout</a> </li>
+        <?php if (isset($_SESSION['id'])): ?>
+            <li><a href="/gallery/index">Gallery</a></li>
+            <li><a href="/profile/index">Profile</a></li>
+            <li><a href="/logout/logout">Logout</a></li>
         <?php endif; ?>
     </ul>
 </nav>

@@ -6,7 +6,7 @@ namespace Includes;
 
 class ImageValidation
 {
-    use tErrorHandler;
+    use terrorhandler;
     private $_passed = false,
             $_errors = array();
 

@@ -1,5 +1,5 @@
 $('#get-num-submit').on('click', function () {
-   $('div#data').load('/Home/number', {
+   $('div#data').load('/home/number', {
 
    })
 });
@@ -10,6 +10,10 @@ $('#get-num-submit').on('click', function () {
       var title = $('input#tabletext').val().replace(/ /g, '.!.');
       var id = $('p#id').text();
 
-      $('#upd').load('/Gallery/update/' + title +'/' + desc + '/' + id + '', alert('Updated'))
+      if (desc !== '' && title !== '')
+          $('#upd').load('/gallery/update/' + title +'/' + desc + '/' + id + '', alert('Updated'));
+      else
+          alert('Empty fields. Can not update the table.');
+
 
    });

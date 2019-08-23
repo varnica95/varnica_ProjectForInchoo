@@ -1,6 +1,7 @@
 <?php require '../app/Views/header.phtml' ?>
 
 <?php
+
 use Models\User;
 
 $info = new User();
@@ -12,26 +13,27 @@ $info->showProfile();
     <form class="signup-form" action="/profile/update" method="POST">
         <h3>Account information</h3>
         <input type="text" name="firstname" value="<?php echo $info->_userRow->fname ?>" readonly>
-        <input type="text" name="lastname"    value="<?php echo $info->_userRow->lname  ?>" readonly>
-        <input type="text" name="email"        value="<?php echo $info->_userRow->email  ?>" readonly>
-        <input type="text" name="username"   value="<?php echo $info->_userRow->username  ?>" readonly> <br>
-        <br><h3>Change your password</h3>
-        <?php if(isset($pwsuccess)) echo '<div class="alert alert-success" role="alert">' . $pwsuccess . '</div>'; ?>
-        <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
-        <?php if(isset($curPwError['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $curPwError['pwd'] . '</div>'; ?>
-        <input type="password" name="pwd_curr" placeholder="Enter current password" >
-        <input type="password" name="pwd_new" placeholder="Enter new password" >
-        <input type="password" name="pwd_rep" placeholder="Enter old password to confirm" >
-        <?php if(isset($errors['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $errors['pwd'] . '</div>'; ?>
+        <input type="text" name="lastname" value="<?php echo $info->_userRow->lname ?>" readonly>
+        <input type="text" name="email" value="<?php echo $info->_userRow->email ?>" readonly>
+        <input type="text" name="username" value="<?php echo $info->_userRow->username ?>" readonly> <br>
+        <br>
+        <h3>Change your password</h3>
+        <?php if (isset($pwsuccess)) echo '<div class="alert alert-success" role="alert">' . $pwsuccess . '</div>'; ?>
+        <?php if (isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
+        <?php if (isset($curPwError['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $curPwError['pwd'] . '</div>'; ?>
+        <input type="password" name="pwd_curr" placeholder="Enter current password">
+        <input type="password" name="pwd_new" placeholder="Enter new password">
+        <input type="password" name="pwd_rep" placeholder="Enter old password to confirm">
+        <?php if (isset($errors['pwd'])) echo '<div class="alert alert-danger" role="alert">' . $errors['pwd'] . '</div>'; ?>
         <button type="submit" name="update-submit">Update</button>
     </form>
 
     <form class="signup-form" action="/profile/upload" method="post" enctype="multipart/form-data">
         <h3>Upload an image</h3>
-        <?php if(isset($imgsuccess)) echo '<div class="alert alert-success" role="alert">' . $imgsuccess . '</div>'; ?>
-        <?php if(isset($fileerrors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['emptyFields'] . '</div>'; ?>
-        <?php if(isset($fileerrors['tooLong'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['tooLong'] . '</div>'; ?>
-        <?php if(isset($fileerror)) echo '<div class="alert alert-danger" role="alert">' . $fileerror . '</div>'; ?>
+        <?php if (isset($imgsuccess)) echo '<div class="alert alert-success" role="alert">' . $imgsuccess . '</div>'; ?>
+        <?php if (isset($fileerrors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['emptyFields'] . '</div>'; ?>
+        <?php if (isset($fileerrors['tooLong'])) echo '<div class="alert alert-danger" role="alert">' . $fileerrors['tooLong'] . '</div>'; ?>
+        <?php if (isset($fileerror)) echo '<div class="alert alert-danger" role="alert">' . $fileerror . '</div>'; ?>
         <input type="text" name="filename" placeholder="Filename">
         <input type="text" name="filetitle" placeholder="Image title">
         <input type="text" name="filedesc" placeholder="Image description">
@@ -40,9 +42,12 @@ $info->showProfile();
     </form>
 
     <form class="signup-form" action="/profile/delete" method="POST">
-        <br><h3>Delete your account</h3>
+        <br>
+        <h3>Delete your account</h3>
         <p>*This will delete your account and all uploaded images. </p>
-        <button onclick="return confirm('Are you sure you want to delete your account?')" type="submit" name="delete-submit">Delete</button>
+        <button onclick="return confirm('Are you sure you want to delete your account?')" type="submit"
+                name="delete-submit">Delete
+        </button>
     </form>
 
 

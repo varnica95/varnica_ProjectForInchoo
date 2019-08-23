@@ -9,6 +9,7 @@ use Core\Controller;
 class Gallery extends Controller
 {
     private $_gallery;
+
     public function index()
     {
         $this->_gallery = \Models\Gallery::getGallery();
@@ -25,7 +26,7 @@ class Gallery extends Controller
 
         $this->view('gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
-           'gallery' => $gallery
+            'gallery' => $gallery
         ]);
     }
 
@@ -33,7 +34,7 @@ class Gallery extends Controller
     {
         $gallery = \Models\Gallery::deleteImage($id);
         $this->_gallery = \Models\Gallery::getGallery();
-        unlink( BP . '/public/img/'. $imgname);
+        unlink(BP . '/public/img/' . $imgname);
         $this->view('gallery' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Gallery/index.phtml', [
             'success' => 'Image deleted successfully.',
@@ -43,8 +44,8 @@ class Gallery extends Controller
 
     public function update($title = [], $desc = [], $id)
     {
-        $t =str_replace(".!."," ",$title);
-        $d = str_replace(".!."," ",$desc);
+        $t = str_replace(".!.", " ", $title);
+        $d = str_replace(".!.", " ", $desc);
 
         $update = \Models\Gallery::updateRow($t, $d, $id);
 

@@ -4,7 +4,7 @@ namespace Includes;
 
 class Validation implements iValidation
 {
-    use tErrorHandler;
+    use terrorhandler;
     private $_passed = false,
             $_errors = array();
 

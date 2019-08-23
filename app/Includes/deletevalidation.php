@@ -6,14 +6,13 @@ namespace Includes;
 
 class DeleteValidation
 {
-    use tErrorHandler;
+    use terrorhandler;
     private $_passed = false,
         $_errors = array();
 
     public function __construct($params = [])
     {
-        foreach ($params as $key => $value)
-        {
+        foreach ($params as $key => $value) {
             $this->$key = $value;
 
         }
@@ -22,8 +21,7 @@ class DeleteValidation
 
     public function emptyFields()
     {
-        if(empty($this->pwd))
-        {
+        if (empty($this->pwd)) {
             $this->addError('emptyFields', 'Fields cannot be empty. Please fill out empty fields.');
         }
     }

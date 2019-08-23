@@ -5,7 +5,6 @@ namespace Controllers;
 use Core\Controller;
 use Includes\imagevalidation;
 use Includes\profilevalidation;
-use Includes\deletevalidation;
 use Models\Gallery;
 use Models\Session;
 use Models\User;
@@ -33,14 +32,13 @@ class Profile extends Controller
 
                 $profile->updatePassword();
 
-                if(!empty($profile->getErrors()))
-                {
+                if (!empty($profile->getErrors())) {
                     $this->_error = $profile->getErrors();
                     $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'curPwError' => $this->_error
                     ]);
-                }else {
+                } else {
                     $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'pwsuccess' => 'Password updated successfully.'
@@ -57,14 +55,13 @@ class Profile extends Controller
             }
         }
     }
+
     public function delete()
     {
-        if (isset($_POST['delete-submit']))
-        {
+        if (isset($_POST['delete-submit'])) {
             $images = Gallery::getImageNames();
-            foreach ($images as $key => $value)
-            {
-                unlink( BP . '/public/img/'. $value->imgFullNameGallery);
+            foreach ($images as $key => $value) {
+                unlink(BP . '/public/img/' . $value->imgFullNameGallery);
             }
             User::deleteAccount();
             $this->view('login' . DIRECTORY_SEPARATOR . 'index');
@@ -74,6 +71,7 @@ class Profile extends Controller
 
         }
     }
+
     public function upload()
     {
         if (isset($_POST['upload-submit'])) {
@@ -108,18 +106,18 @@ class Profile extends Controller
                         $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                         echo $this->view->render('Profile/index.phtml', [
                             'imgsuccess' => 'Image uploaded successfully.'
-                            ]);
+                        ]);
                     }
-                }else{
+                } else {
                     $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'fileerror' => 'The file does not exist or the extension is not allowed. Please try again.'
                     ]);
                 }
 
-            }else{
+            } else {
                 $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
-                echo $this->view->render('Profile/index.phtml',[
+                echo $this->view->render('Profile/index.phtml', [
                     'fileerrors' => $validation->getErrors()
                 ]);
             }

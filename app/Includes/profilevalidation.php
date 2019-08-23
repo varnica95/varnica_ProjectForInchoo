@@ -4,7 +4,7 @@ namespace Includes;
 
 class ProfileValidation
 {
-    use tErrorHandler;
+    use terrorhandler;
     private $_passed = false,
         $_errors = array();
 

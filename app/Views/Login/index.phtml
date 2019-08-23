@@ -1,19 +1,19 @@
-<?php require '../app/Views/header.phtml' ;
+<?php require '../app/Views/header.phtml';
 if (!isset($_SESSION))
     session_start();
 
 ?>
-<h1>Login Page</h1>
+    <h1>Login Page</h1>
 
-<?php if(isset($success)) echo '<div class="alert alert-success" role="alert">' . $success . '</div>'; ?>
-<form class="signup-form" action="/login/userLogin" method="POST">
-    <input type="text" name="userOrEmail" placeholder="Username or email">
-     <?php if(isset($errors['wrongusername'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongusername'] . '</div>'; ?>
-    <input type="password" name="pwd" placeholder="Password">
-    <?php if(isset($errors['wrongpassword'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongpassword'] . '</div>'; ?>
-    <input id="remember" type="checkbox" name="remember"> <a>Remember me</a>
-    <button type="submit" name="login-submit">Login</button>
-</form>
+<?php if (isset($success)) echo '<div class="alert alert-success" role="alert">' . $success . '</div>'; ?>
+    <form class="signup-form" action="/login/userLogin" method="POST">
+        <input type="text" name="userOrEmail" placeholder="Username or email">
+        <?php if (isset($errors['wrongusername'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongusername'] . '</div>'; ?>
+        <input type="password" name="pwd" placeholder="Password">
+        <?php if (isset($errors['wrongpassword'])) echo '<div class="alert alert-danger" role="alert">' . $errors['wrongpassword'] . '</div>'; ?>
+        <input id="remember" type="checkbox" name="remember"> <a>Remember me</a>
+        <button type="submit" name="login-submit">Login</button>
+    </form>
 
 <?php \Models\Session::destroy() ?>
 <?php require '../app/Views/footer.phtml' ?>

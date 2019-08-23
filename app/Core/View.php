@@ -22,7 +22,7 @@ class View
             ob_start();
             try {
                 extract($vars, EXTR_SKIP);
-                include  BP . '/app/Views/' . $templateFile;
+                include BP . '/app/Views/' . $templateFile;
             } catch (\Exception $e) {
                 ob_end_clean();
                 throw $e;
