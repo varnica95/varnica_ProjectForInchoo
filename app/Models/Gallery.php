@@ -23,7 +23,6 @@ class Gallery
 
     public function uploadImage()
     {
-
         try {
             $conn = Database::getInstance()->getPDO();
 
@@ -39,7 +38,8 @@ class Gallery
             $stmt->bindValue(':imgFullNameGallery', $this->imgFullNameGallery);
 
             $stmt->execute();
-        }catch (\PDOException $e)
+        }
+        catch (\PDOException $e)
         {
             $e->getMessage();
         }
@@ -57,7 +57,8 @@ class Gallery
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }
@@ -75,7 +76,8 @@ class Gallery
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }
@@ -92,7 +94,8 @@ class Gallery
             $stmt->bindValue(':id', $id);
             $stmt->execute();
 
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }
@@ -110,7 +113,8 @@ class Gallery
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }catch (\PDOException $e)
+        }
+        catch (\PDOException $e)
         {
             $e->getMessage();
         }
@@ -128,7 +132,8 @@ class Gallery
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }catch(\PDOException $e){
+        }
+        catch(\PDOException $e){
             $e->getMessage();
         }
     }
@@ -148,7 +153,8 @@ class Gallery
 
             $stmt->execute();
 
-        }catch(\PDOException $e){
+        }
+        catch(\PDOException $e){
             $e->getMessage();
         }
     }

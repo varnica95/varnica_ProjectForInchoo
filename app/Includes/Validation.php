@@ -59,7 +59,6 @@ class Validation implements iValidation
 
     public function checkPassword()
     {
-
         if (strlen($this->pwd) < 5)
         {
             $this->addError('pwd', 'Minimum password lenght is 5.');
@@ -77,7 +76,6 @@ class Validation implements iValidation
             $this->addError('pwd','Passwords do not match.');
         }
     }
-
 
     public function checkValidation()
     {

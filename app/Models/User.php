@@ -156,7 +156,8 @@ class User
             $stmt->execute();
 
             $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }
@@ -173,7 +174,8 @@ class User
             $stmt->execute();
 
             return $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
 
@@ -191,7 +193,8 @@ class User
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_OBJ)->pwd;
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }
@@ -214,7 +217,8 @@ class User
                 $stmt->bindValue(':id', $_SESSION['id']);
                 $stmt->execute();
             }
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }
@@ -235,7 +239,8 @@ class User
             $stmt->bindValue(':id', Session::get('id'));
             $stmt->execute();
 
-        }catch (\PDOException $e){
+        }
+        catch (\PDOException $e){
             $e->getMessage();
         }
     }

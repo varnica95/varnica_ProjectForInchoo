@@ -23,6 +23,7 @@ class Config{
             return $temp;
         }
     }
+
     public static function getInstance()
     {
         if(!isset(self::$_instance))

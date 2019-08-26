@@ -13,6 +13,7 @@ class Gallery extends Controller
     public function index()
     {
         $this->_gallery = \Models\Gallery::getGallery();
+
         echo $this->view->render('Gallery/index.phtml', [
             'gallery' => $this->_gallery
         ]);
@@ -31,7 +32,9 @@ class Gallery extends Controller
     public function delete($id, $imgname)
     {
         $gallery = \Models\Gallery::deleteImage($id);
+
         $this->_gallery = \Models\Gallery::getGallery();
+
         unlink(BP . '/public/img/' . $imgname);
 
         echo $this->view->render('Gallery/index.phtml', [
