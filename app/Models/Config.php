@@ -6,11 +6,14 @@ class Config{
     private static $_instance = NULL;
     private $_config;
 
-    private function __construct(){}
+    private function __construct()
+    {
+        $this->_config = require '../app/Core/environment.php';
+    }
 
     public function getConfig($path = null)
     {
-        $this->_config = require '../app/Core/environment.php';
+        //$this->_config = require '../app/Core/environment.php';
         if ($path) {
             $path = explode("/", $path);
             foreach ($path as $part) {
