@@ -3,24 +3,25 @@
 namespace Models;
 
 class Config{
-    private static $_instance = NULL;
+    private static $_instance;
     private $_config;
+    private $_temp;
 
     private function __construct()
     {
-        $this->_config = require '../app/Core/environment.php';
+       $this->_config = require '../app/Core/environment.php';
     }
 
     public function getConfig($path = null)
     {
-        //$this->_config = require '../app/Core/environment.php';
+        $temp = $this->_config;
         if ($path) {
             $path = explode("/", $path);
             foreach ($path as $part) {
-                if (isset($this->_config[$part]))
-                    $this->_config = $this->_config[$part];
+                if (isset($temp[$part]))
+                    $temp = $temp[$part];
             }
-            return $this->_config;
+            return $temp;
         }
     }
     public static function getInstance()

@@ -9,8 +9,17 @@ use Models\Config;
 use Models\Session;
 
 spl_autoload_register(function ($class) {
+
     $file = str_replace('\\', '/', $class);
-    require_once BP . '/app/' . $file . '.php';
+    $path = BP . '/app/' . $file . '.php';
+
+    if (file_exists($path)) {
+        require_once $path;
+    }
+    else{
+        echo "Error: File not found.";
+    }
+
 });
 
 

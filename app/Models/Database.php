@@ -5,7 +5,7 @@ use PDO;
 
 class Database
 {
-    private static $_instance = NULL;
+    private static $_instance;
 
     private $_pdo;
     private $_error = false;
