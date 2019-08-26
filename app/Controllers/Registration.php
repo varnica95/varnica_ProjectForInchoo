@@ -3,7 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
-use Includes\validation;
+use Includes\Validation;
 use Models\User;
 
 class Registration extends Controller

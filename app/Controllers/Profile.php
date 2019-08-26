@@ -3,8 +3,8 @@
 namespace Controllers;
 
 use Core\Controller;
-use Includes\imagevalidation;
-use Includes\profilevalidation;
+use Includes\ImageValidation;
+use Includes\ProfileValidation;
 use Models\Gallery;
 use Models\Session;
 use Models\User;

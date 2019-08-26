@@ -2,9 +2,9 @@
 
 namespace Includes;
 
-class Validation implements ivalidation
+class Validation implements iValidation
 {
-    use terrorhandler;
+    use tErrorHandler;
 
     private $_passed = false;
     private $_errors = array();

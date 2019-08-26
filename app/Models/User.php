@@ -2,7 +2,7 @@
 
 namespace Models;
 use Includes\hash;
-use Includes\terrorhandler;
+use Includes\tErrorHandler;
 use PDO;
 
 
@@ -165,7 +165,7 @@ class User
         try{
             $conn = Database::getInstance()->getPDO();
 
-            $sql = 'SELECT username  FROM users WHERE id = :id';
+            $sql = 'SELECT username FROM users WHERE id = :id';
 
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':id', Session::get('id'));
@@ -175,9 +175,7 @@ class User
         }catch (\PDOException $e){
             $e->getMessage();
         }
-
-//        $sql = 'SELECT username  FROM users WHERE id = :id';
-//        $data = Database::getInstance()->query($sql, [Session::get('id')]);
+        
     }
 
     public function getPassword()
