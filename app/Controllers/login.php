@@ -2,9 +2,6 @@
 
 namespace Controllers;
 
-if (!isset($_SESSION))
-    session_start();
-
 use Core\Controller;
 use Models\Session;
 use Models\User;

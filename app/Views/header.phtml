@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+\Models\Session::start();
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +15,11 @@ if (!isset($_SESSION)) {
 <nav>
     <ul>
         <li><a href="/home/">Home</a></li>
-        <?php if (!isset($_SESSION['id'])): ?>
+        <?php if (!\Models\Session::get('id')): ?>
             <li><a href="/login/">Login</a></li>
             <li><a href="/registration/">Registration</a></li>
         <?php endif; ?>
-        <?php if (isset($_SESSION['id'])): ?>
+        <?php if (\Models\Session::get('id')): ?>
             <li><a href="/gallery/index">Gallery</a></li>
             <li><a href="/profile/index">Profile</a></li>
             <li><a href="/logout/logout">Logout</a></li>

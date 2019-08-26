@@ -8,12 +8,12 @@ class Session
 {
     public static function start()
     {
-        if (!isset($_SESSION))
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
     }
     public static function set($name, $key)
     {
-       // foreach ($k as $key => $value)
         $_SESSION[$name] = $key;
     }
 
@@ -29,16 +29,8 @@ class Session
 
     public static function get($key)
     {
-        return $_SESSION[$key];
+        if(isset($_SESSION[$key])) {
+            return $_SESSION[$key];
+        }
     }
-
-    public static function getStr($key1, $key2)
-    {
-        return $_SESSION[$key1][$key2];
-    }
-
-
-
-
-
 }

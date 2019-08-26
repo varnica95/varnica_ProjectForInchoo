@@ -1,6 +1,4 @@
 <?php require '../app/Views/header.phtml';
-if (!isset($_SESSION))
-    session_start();
 
 ?>
     <h1>Login Page</h1>
@@ -15,5 +13,4 @@ if (!isset($_SESSION))
         <button type="submit" name="login-submit">Login</button>
     </form>
 
-<?php \Models\Session::destroy() ?>
 <?php require '../app/Views/footer.phtml' ?>

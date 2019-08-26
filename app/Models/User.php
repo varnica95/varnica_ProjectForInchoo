@@ -5,8 +5,6 @@ use Includes\hash;
 use Includes\terrorhandler;
 use PDO;
 
-if (!isset($_SESSION))
-session_start();
 
 class User extends Database
 {
@@ -94,7 +92,6 @@ class User extends Database
                             $this->rememberMe($hash);
                         }else{
                             $hash = $hashCheck->hash;
-                            var_dump($hash);
                         }
 
                     Cookie::put($this->_cookieName, $hash, Config::getInstance()->getConfig("remember/cookie_expiry"));

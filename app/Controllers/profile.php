@@ -9,10 +9,6 @@ use Models\Gallery;
 use Models\Session;
 use Models\User;
 
-if (!isset($_SESSION))
-    session_start();
-
-
 class Profile extends Controller
 {
     public $_error;
