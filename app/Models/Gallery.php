@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Core\Database;
+
 class Gallery
 {
     private $uploaderId;

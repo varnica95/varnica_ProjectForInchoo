@@ -1,6 +1,7 @@
 <?php
 
-namespace Models;
+namespace Core;
+use Models\Config;
 use PDO;
 
 class Database
@@ -8,9 +9,6 @@ class Database
     private static $_instance;
 
     private $_pdo;
-    private $_error = false;
-    private $_query;
-    private $_results;
 
     private function __construct()
     {

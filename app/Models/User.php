@@ -1,6 +1,7 @@
 <?php
 
 namespace Models;
+use Core\Database;
 use Includes\hash;
 use Includes\tErrorHandler;
 use PDO;
@@ -175,7 +176,7 @@ class User
         }catch (\PDOException $e){
             $e->getMessage();
         }
-        
+
     }
 
     public function getPassword()

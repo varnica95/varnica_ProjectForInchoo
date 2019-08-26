@@ -5,7 +5,6 @@ namespace Models;
 class Config{
     private static $_instance;
     private $_config;
-    private $_temp;
 
     private function __construct()
     {
