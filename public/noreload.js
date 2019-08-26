@@ -1,5 +1,5 @@
 $('#get-num-submit').on('click', function () {
-   $('div#data').load('/home/number', {
+   $('div#data').load('/Home/number', {
 
    })
 });
@@ -11,7 +11,7 @@ $('#get-num-submit').on('click', function () {
       var id = $('p#id').text();
 
       if (desc !== '' && title !== '')
-          $('#upd').load('/gallery/update/' + title +'/' + desc + '/' + id + '', alert('Updated'));
+          $('#upd').load('/Gallery/update/' + title +'/' + desc + '/' + id + '', alert('Updated'));
       else
           alert('Empty fields. Can not update the table.');
 

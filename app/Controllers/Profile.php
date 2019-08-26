@@ -15,7 +15,6 @@ class Profile extends Controller
 
     public function index()
     {
-        $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Profile/index.phtml');
     }
 
@@ -30,19 +29,16 @@ class Profile extends Controller
 
                 if (!empty($profile->getErrors())) {
                     $this->_error = $profile->getErrors();
-                    $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'curPwError' => $this->_error
                     ]);
                 } else {
-                    $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                     echo $this->view->render('Profile/index.phtml', [
                         'pwsuccess' => 'The password updated successfully.'
                     ]);
                 }
 
             } else {
-                $this->view('profile' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Profile/index.phtml', [
                     'errors' => $validation->getErrors(),
                     'pwerror' => $this->_error

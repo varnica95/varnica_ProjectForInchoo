@@ -2,11 +2,13 @@
 
 namespace Models;
 
-class Gallery extends Database
+class Gallery
 {
-    private $uploaderId, $uploader,
-        $titleGallery, $descGallery,
-        $imgFullNameGallery;
+    private $uploaderId;
+    private $uploader;
+    private $titleGallery;
+    private $descGallery;
+    private $imgFullNameGallery;
 
     public function __construct($id, $uploader, $title, $desc, $imageFullname)
     {

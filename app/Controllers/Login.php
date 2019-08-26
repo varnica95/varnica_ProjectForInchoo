@@ -10,7 +10,6 @@ class Login extends Controller
 {
     public function index()
     {
-        $this->view('login' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Login/index.phtml');
     }
 
@@ -25,12 +24,10 @@ class Login extends Controller
                 $remember = false;
 
             if (!$user->userLogin($remember)) {
-                $this->view('login' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Login/index.phtml', [
                     'errors' => $user->getErrors(),
                 ]);
             } else {
-                $this->view('home' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Home/index.phtml', [
                     'success' => 'Welcome. You are now logged in.'
                 ]);

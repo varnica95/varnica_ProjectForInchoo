@@ -10,7 +10,6 @@ class Registration extends Controller
 {
     public function index()
     {
-        $this->view('registration' . DIRECTORY_SEPARATOR . 'index');
         echo $this->view->render('Registration/index.phtml');
     }
 
@@ -22,12 +21,10 @@ class Registration extends Controller
                 $newUser = new User($_POST);
                 $newUser->newUser();
 
-                $this->view('registration' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Registration/index.phtml', [
                     'success' => 'Registration successfully completed.'
                 ]);
             } else {
-                $this->view('registration' . DIRECTORY_SEPARATOR . 'index');
                 echo $this->view->render('Registration/index.phtml', [
                     'errors' => $validation->getErrors()
                 ]);

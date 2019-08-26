@@ -6,7 +6,7 @@ use Includes\terrorhandler;
 use PDO;
 
 
-class User extends Database
+class User
 {
     use tErrorHandler;
 
@@ -175,6 +175,9 @@ class User extends Database
         }catch (\PDOException $e){
             $e->getMessage();
         }
+
+//        $sql = 'SELECT username  FROM users WHERE id = :id';
+//        $data = Database::getInstance()->query($sql, [Session::get('id')]);
     }
 
     public function getPassword()
