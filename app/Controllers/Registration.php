@@ -22,7 +22,8 @@ class Registration extends Controller
                 $newUser->newUser();
 
                 echo $this->view->render('Registration/index.phtml', [
-                    'success' => 'Registration successfully completed.'
+                    'success' => 'Registration successfully completed.',
+                    'errors' => $newUser->getErrors()
                 ]);
             } else {
                 echo $this->view->render('Registration/index.phtml', [

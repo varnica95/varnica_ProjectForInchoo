@@ -1,10 +1,11 @@
 <?php require '../app/Views/header.phtml' ?>
 <h1>Registration Page</h1>
 
-
 <form class="signup-form" action="/registration/createNew" method="POST">
-    <?php if(isset($success)) echo '<div class="alert alert-success" role="alert">' . $success . '</div>'; ?>
+    <?php if(!isset($errors['userExists']) && !isset($errors['emailExists']) && isset($success)) echo '<div class="alert alert-success" role="alert">' . $success . '</div>'; ?>
     <?php if(isset($errors['emptyFields'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emptyFields'] . '</div>'; ?>
+    <?php if(isset($errors['userExists'])) echo '<div class="alert alert-danger" role="alert">' . $errors['userExists'] . '</div>'; ?>
+    <?php if(isset($errors['emailExists'])) echo '<div class="alert alert-danger" role="alert">' . $errors['emailExists'] . '</div>'; ?>
     <input type="text" name="firstname" placeholder="Firstname">
     <input type="text" name="lastname" placeholder="Lastname">
     <?php if(isset($errors['flName'])) echo '<div class="alert alert-danger" role="alert">' . $errors['flName'] . '</div>'; ?>
