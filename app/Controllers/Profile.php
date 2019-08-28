@@ -53,12 +53,12 @@ class Profile extends Controller
         if (isset($_POST['delete-submit'])) {
             $images = Gallery::getImageNames();
             foreach ($images as $key => $value) {
-                unlink(BP . '/public/img/' . $value->imgFullNameGallery);
+                unlink(BP . '/public/img/' . $value->getData()['imgFullNameGallery']);
             }
             User::deleteAccount();
             $this->view('login' . DIRECTORY_SEPARATOR . 'index');
             echo $this->view->render('Login/index.phtml', [
-                'success' => 'The account sucessfully deleted.'
+                'success' => 'The account is deleted successfully.'
             ]);
 
         }
@@ -92,7 +92,7 @@ class Profile extends Controller
                         $info = new User();
                         $uploader = $info->getUsername();
 
-                        $image = new Gallery(Session::get('id'), $uploader->username, $imageTitle, $imageDesc, $imageFullName);
+                        $image = new Gallery(Session::get('id'), $uploader, $imageTitle, $imageDesc, $imageFullName);
                         $image->uploadImage();
                         move_uploaded_file($fileTempName, $fileDestination);
                         $this->view('profile' . DIRECTORY_SEPARATOR . 'index');

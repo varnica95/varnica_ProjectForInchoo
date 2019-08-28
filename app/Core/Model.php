@@ -8,6 +8,7 @@ class Model
 {
     protected $data = [];
     protected $conn;
+    protected static $sconn;
 
     public function __construct()
     {
@@ -34,6 +35,24 @@ class Model
             $row->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
 
             return $row->fetch();
+        }
+        catch (\PDOException $e)
+        {
+            $e->getMessage();
+        }
+    }
+
+    public static function sload($tableName, $field, $value)
+    {
+        try {
+            self::$sconn = Database::getInstance()->getPDO();
+            $sql = "SELECT * FROM {$tableName} WHERE {$field} = '{$value}'";
+
+            $row = self::$sconn->query($sql);
+
+            $row->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+
+            return $row->fetchAll();
         }
         catch (\PDOException $e)
         {
@@ -95,4 +114,23 @@ class Model
             $e->getMessage();
         }
     }
+
+    public static function sdelete($tableName, $field, $value)
+    {
+        try {
+           self::$sconn = Database::getInstance()->getPDO();
+            $sql = "DELETE FROM {$tableName} WHERE {$field} = '{$value}'";
+
+            $row = self::$sconn->query($sql);
+
+            $row->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+
+            return $row->fetch();
+        }
+        catch (\PDOException $e)
+        {
+            $e->getMessage();
+        }
+    }
+
 }

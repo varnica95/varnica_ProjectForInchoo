@@ -189,11 +189,11 @@ class User extends Model
 
     public static function CheckHashRememberme($hash)
     {
-        return self::load('remember', 'hash', $hash);
+        return self::sload('remember', 'hash', $hash);
     }
 
     public static function DeleteCookie($id)
     {
-        self::delete('remember', 'user_id', $id);
+        self::sdelete('remember', 'user_id', $id);
     }
 }

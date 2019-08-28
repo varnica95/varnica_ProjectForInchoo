@@ -3,8 +3,9 @@
 namespace Models;
 
 use Core\Database;
+use Core\Model;
 
-class Gallery
+class Gallery extends Model
 {
     private $uploaderId;
     private $uploader;
@@ -63,61 +64,19 @@ class Gallery
         }
     }
 
-    public static function getUserGallery($uploader)
+    public function getUserGallery($uploader)
     {
-        try{
-            $conn = Database::getInstance()->getPDO();
-
-            $sql = 'SELECT * FROM gallery WHERE uploader = :uploader ORDER BY id DESC';
-
-            $stmt = $conn->prepare($sql);
-
-            $stmt->bindValue(':uploader', $uploader);
-            $stmt->execute();
-
-            return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }
-        catch (\PDOException $e){
-            $e->getMessage();
-        }
+        return $this->load('gallery', 'uploader', $uploader);
     }
 
     public static function deleteImage($id)
     {
-        try{
-            $conn = Database::getInstance()->getPDO();
-
-            $sql = 'DELETE FROM gallery WHERE id = :id';
-
-            $stmt = $conn->prepare($sql);
-
-            $stmt->bindValue(':id', $id);
-            $stmt->execute();
-
-        }
-        catch (\PDOException $e){
-            $e->getMessage();
-        }
+        self::sdelete('gallery', 'id', $id);
     }
 
     public static function getImageNames()
     {
-        try{
-            $conn = Database::getInstance()->getPDO();
-
-            $sql = 'SELECT * FROM gallery WHERE uploaderid = :uploaderid';
-
-            $stmt = $conn->prepare($sql);
-
-            $stmt->bindValue(':uploaderid', Session::get('id'));
-            $stmt->execute();
-
-            return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }
-        catch (\PDOException $e)
-        {
-            $e->getMessage();
-        }
+        return self::sload('gallery', 'uploaderid', Session::get('id'));
     }
 
     public static function getNumberOfImages()
