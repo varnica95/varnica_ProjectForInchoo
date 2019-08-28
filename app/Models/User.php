@@ -4,7 +4,7 @@ namespace Models;
 
 use Core\Database;
 use Core\Model;
-use Includes\hash;
+use Includes\Hash;
 use Includes\tErrorHandler;
 use PDO;
 
@@ -62,16 +62,7 @@ class User extends Model
     public function userLogin($remember = false)
     {
         try {
-//            $conn = Database::getInstance()->getPDO();
-//
-//            $sql = 'SELECT * FROM users WHERE username = :username OR email = :email';
-//            $stmt = $conn->prepare($sql);
-//
-//            $stmt->bindValue(':username', $this->userOrEmail);
-//            $stmt->bindValue(':email', $this->userOrEmail);
-//            $stmt->execute();
-//
-//            $row = $stmt->fetch(PDO::FETCH_OBJ);
+
             $row = $this->loadLogin('users', ['username', 'email'], [$this->data['userOrEmail'], $this->data['userOrEmail']]);
             if (!empty($row)) {
                 $passwordCheck = password_verify($this->data['pwd'], $row->data['pwd']);
@@ -109,18 +100,7 @@ class User extends Model
 
     private function UserAlreadyExists()
     {
-//        $conn = Database::getInstance()->getPDO();
-//
-//        $sql = 'SELECT * FROM users WHERE username = :username';
-//
-//        $stmt = $conn->prepare($sql);
-//        $stmt->bindValue(':username', $this->username);
-//        $stmt->execute();
-//
-//        if ($stmt->rowCount() > 0)
-//        {
-//            $this->addError('userExists', 'Username ' . $this->username . ' is already in database.' );
-//        }
+
         $stmt = $this->load('users', 'username', $this->data['username']);
 
         if (!empty($stmt)) {
@@ -130,18 +110,7 @@ class User extends Model
 
     private function EmailAlreadyExists()
     {
-//        $conn = Database::getInstance()->getPDO();
-//
-//        $sql = 'SELECT * FROM users WHERE email = :email';
-//
-//        $stmt = $conn->prepare($sql);
-//        $stmt->bindValue(':email', $this->email);
-//        $stmt->execute();
-//
-//        if ($stmt->rowCount() > 0)
-//        {
-//            $this->addError('emailExists','Email ' . $this->email . ' is already in database.' );
-//        }
+
         $stmt = $this->load('users', 'email', $this->data['email']);
 
         if (!empty($stmt)) {
@@ -151,81 +120,33 @@ class User extends Model
 
     public function showProfile()
     {
-        try {
-            $conn = Database::getInstance()->getPDO();
-
-            $sql = 'SELECT fname, lname, email, username  FROM users WHERE id = :id';
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bindValue(':id', Session::get('id'));
-            $stmt->execute();
-
-            $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
-        } catch (\PDOException $e) {
-            $e->getMessage();
-        }
+        $this->_userRow = $this->load('users', 'id', Session::get('id'));
     }
 
     public function getUsername()
     {
-//        try{
-//            $conn = Database::getInstance()->getPDO();
-//
-//            $sql = 'SELECT username FROM users WHERE id = :id';
-//
-//            $stmt = $conn->prepare($sql);
-//            $stmt->bindValue(':id', Session::get('id'));
-//            $stmt->execute();
-//
-//            return $this->_userRow = $stmt->fetch(PDO::FETCH_OBJ);
-//        }
-//        catch (\PDOException $e){
-//            $e->getMessage();
-//        }
-
         $this->_userRow = $this->load('users', 'id', Session::get('id'));
-        return $this->_userRow->username;
-
+        return $this->_userRow->data['username'];
     }
 
     public function getPassword()
     {
-        try {
-            $conn = Database::getInstance()->getPDO();
-
-            $sql = 'SELECT pwd FROM users WHERE id = :id';
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bindValue(':id', Session::get('id'));
-            $stmt->execute();
-
-            return $stmt->fetch(PDO::FETCH_OBJ)->pwd;
-        } catch (\PDOException $e) {
-            $e->getMessage();
-        }
+        $this->_userRow = $this->load('users', 'id', Session::get('id'));
+        return $this->_userRow->data['pwd'];
     }
 
     public function updatePassword()
     {
-        try {
-            $conn = Database::getInstance()->getPDO();
-
-            $sql = 'UPDATE users SET pwd = :pwd WHERE id = :id';
-
-            $stmt = $conn->prepare($sql);
-            $passwordCheck = password_verify($this->pwd_curr, $this->getPassword());
-            if (!$passwordCheck) {
-                $this->addError('pwd', 'Wrong password.');
-            } else {
-                $hashedPassword = password_hash($this->pwd_new, PASSWORD_DEFAULT);
-                $stmt->bindValue(':pwd', $hashedPassword);
-                $stmt->bindValue(':id', $_SESSION['id']);
-                $stmt->execute();
-            }
-        } catch (\PDOException $e) {
-            $e->getMessage();
+        $passwordCheck = password_verify($this->data['pwd_curr'], $this->getPassword());
+        if (!$passwordCheck) {
+            $this->addError('pwd', 'Wrong password.');
+        }
+        else {
+            $hashedPassword = password_hash($this->data['pwd_new'], PASSWORD_DEFAULT);
+            $this->update('users', ['pwd', 'id'], [$hashedPassword, Session::get('id')]);
         }
     }
+
 
     public static function deleteAccount()
     {
@@ -263,44 +184,16 @@ class User extends Model
 
     private function CheckRememberme()
     {
-        $conn = Database::getInstance()->getPDO();
-
-        $sql = 'SELECT * FROM remember WHERE user_id = :id';
-        $stmt = $conn->prepare($sql);
-
-        $stmt->bindValue(":id", Session::get('id'));
-
-        $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $this->load('remember', 'user_id', Session::get('id'));
     }
 
     public static function CheckHashRememberme($hash)
     {
-        $conn = Database::getInstance()->getPDO();
-
-        $sql = 'SELECT * FROM remember WHERE hash = :hash';
-        $stmt = $conn->prepare($sql);
-
-        $stmt->bindValue(":hash", $hash);
-
-        $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return self::load('remember', 'hash', $hash);
     }
 
     public static function DeleteCookie($id)
     {
-        $conn = Database::getInstance()->getPDO();
-
-        $sql = 'DELETE FROM remember WHERE user_id = :id';
-        $stmt = $conn->prepare($sql);
-
-        $stmt->bindValue(":id", $id);
-
-        $stmt->execute();
-
+        self::delete('remember', 'user_id', $id);
     }
-
-
 }
