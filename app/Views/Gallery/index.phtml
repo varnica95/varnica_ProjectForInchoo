@@ -30,7 +30,7 @@
                         foreach ($gallery
 
                         as $key => $value): ?>
-                        <th scope="row"><?php echo $key; ?></th>
+                        <th scope="row"><?php echo $key += 1; ?></th>
                         <td class="w-25">
                             <img src="<?php echo '/img/' . $value->imgFullNameGallery ?>"
                                  class="img-fluid img-thumbnail" alt="Image">
